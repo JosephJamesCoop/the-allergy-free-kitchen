@@ -1,5 +1,5 @@
-# Blog-Frog
-Relevancy-based tech networking
+# The Allergy-Free Kitchen
+Allergy-based recipe network
 
   ![](https://img.shields.io/badge/javascript-100-yellow?logo=javascript)
   ![](https://img.shields.io/badge/mysql2-dep-blue?logo=npm)
