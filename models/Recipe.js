@@ -1,5 +1,43 @@
 // This model will be populated with recipes (posts that users make) and will be connected with both the Ingredient and Allergy models.
 
+const { get } = require("http");
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
+class Recipe extends Model {
+     static addRecipe(name, description ,ingredients) {
+         return 
+     }
+}
+
+Recipe.init(
+    {
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+          },
+          name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
+          description: {
+              type: DataTypes.STRING,
+              allowNull: true,
+          },
+          ingredients: {
+            type: DataTypes.STRING(500),
+            allowNull: false,
+            validate: {
+               len: [3]
+            },
+            get(ingredientString) {
+                return ingredientString.split(/[^A-Za-z ]/).map((ingredient) => {
+                    return ingredient.trim()
+                });
+            }
+          }
+
+    }
+)
