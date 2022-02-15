@@ -1,0 +1,2 @@
+// This model will be populated with the app's users and will be connected with The Recipe, Vote and Allergy models.
+// User is connected with Allergy so that each user can list their allergies and be recommended recipes by the site that don't contain their allergens.

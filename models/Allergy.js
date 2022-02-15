@@ -1,0 +1,1 @@
+// This model is populated with all filterable allergies and is connected with the Recipe and Ingredient models

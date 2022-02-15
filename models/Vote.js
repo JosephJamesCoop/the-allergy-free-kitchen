@@ -1,0 +1,1 @@
+// This model will be populated with recipes that users voted on, and will be connected with the Recipe and User models.
