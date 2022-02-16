@@ -56,4 +56,10 @@ Recipe.init({
       });
     },
   }
-});
+},
+{
+    hooks: {
+        // function to look through allergies just before adding a recipe and determine if any ingredients in the recipe match any in an allergy. Then if an ingredient matches it creates an association in the Ingredient model.
+    }
+}
+);
