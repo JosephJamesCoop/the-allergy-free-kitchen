@@ -5,8 +5,17 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
 class Recipe extends Model {
-     static addRecipe(name, description ,ingredients) {
-         return 
+     static async addRecipe(body, models) {
+         try {
+            return await Recipe.create({
+                name: body.name,
+                description: body.description,
+                ingredients: body.ingredients
+            });
+         }
+         catch (err) {
+            return err;
+         }
      }
 }
 
@@ -21,6 +30,9 @@ Recipe.init(
           name: {
             type: DataTypes.STRING,
             allowNull: false,
+            set(name) {
+                return name[0].toUpperCase() + string.slice(1);
+            }
           },
           description: {
               type: DataTypes.STRING,
