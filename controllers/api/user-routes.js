@@ -1,5 +1,10 @@
 const router = require('express').Router();
-const { User, Post, Vote, Comment } = require('../../models');
+const { User, Recipe, Vote, Comment } = require('../../models');
+const error505 = err => {
+  console.log(err);
+  res.status(500).json(err);
+};
+const message400 = { message: 'No user found with the the provided information' };
 
 // insomnia test GET /api/users
 router.get('/', (req, res) => {
@@ -7,10 +12,7 @@ router.get('/', (req, res) => {
     attributes: { exclude: ['password'] }
   })
     .then(dbUserData => res.json(dbUserData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+    .catch(error505);
 });
 
 // insomnia test GET /api/users/1
@@ -46,15 +48,12 @@ router.get('/:id', (req, res) => {
   })
     .then(dbUserData => {
       if (!dbUserData) {
-        res.status(404).json({ message: 'No user found with this id' });
+        res.status(404).json(message400);
         return;
       }
       res.json(dbUserData);
     })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+    .catch(error505);
 });
 
 // insomnia test route POST /api/users
@@ -87,10 +86,9 @@ router.post('/login', (req, res) => {
     }
   }).then(dbUserData => {
     if (!dbUserData) {
-      res.status(400).json({ message: 'No user with that email address!' });
+      res.status(400).json(message400);
       return;
     }
-
     // verify user
     const validPassword = dbUserData.checkPassword(req.body.password);
 
@@ -98,12 +96,10 @@ router.post('/login', (req, res) => {
       res.status(400).json({ message: 'Incorrect password!' });
       return;
     }
-   
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
-
       res.json({ user: dbUserData, message: 'You are now logged in!' });
     });
   });
@@ -123,15 +119,12 @@ router.put('/:id', (req, res) => {
   })
     .then(dbUserData => {
       if (!dbUserData[0]) {
-        res.status(404).json({ message: 'No user found with this id' });
+        res.status(404).json(message400);
         return;
       }
       res.json(dbUserData);
     })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+    .catch(error505);
 });
 
 // insomnia test DELETE /api/users/1
@@ -143,15 +136,12 @@ router.delete('/:id', (req, res) => {
   })
     .then(dbUserData => {
       if (!dbUserData) {
-        res.status(404).json({ message: 'No user found with this id' });
+        res.status(404).json(message400);
         return;
       }
       res.json(dbUserData);
     })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+    .catch(error505);
 });
 
 // testing with POST /logout
