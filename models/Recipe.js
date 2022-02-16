@@ -2,6 +2,7 @@
 
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
+const Allergy = require("../models/Allergy")
 
 class Recipe extends Model {
   static async addRecipe(body, models) {
@@ -35,6 +36,13 @@ Recipe.init({
     type: DataTypes.STRING,
     allowNull: true,
   },
+  instructions: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+        len: [6],
+    }
+  },
   ingredients: {
     type: DataTypes.STRING(500),
     allowNull: false,
@@ -55,7 +63,13 @@ Recipe.init({
         return ingredient.trim();
       });
     },
-  }
+  },
+  allergies: {
+      type: DataTypes.VIRTUAL,
+      get() {
+          
+      }
+  },
 },
 {
     hooks: {

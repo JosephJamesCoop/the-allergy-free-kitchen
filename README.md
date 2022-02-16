@@ -58,7 +58,7 @@ Allergy-based recipe network
   Now navigate to your browser and the app homepage should be running in the root of localhost.
 
   ## Maintainers
-  [@Heather Albjerg](https://github.com/)
+  [@Heather Albjerg](https://github.com/heatherviolet)
   [@Joseph Cooper](https://github.com/JosephJamesCoop)
   [@Kellie Harman](https://github.com/knharman)
   [@Daniel Harned](https://github.com/DrDano)
