@@ -1,1 +1,9 @@
-someping else
+{{> allergens }}
+
+<h1>Top Recipes of the Week</h1>
+
+<div id="top-recipes">
+    {{#each recipes as |recipe|}}
+        {{> recipe-description}}
+    {{/each}}
+</div>
