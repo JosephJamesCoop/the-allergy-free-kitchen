@@ -18,13 +18,38 @@ User.hasMany(Recipe, {
 
 // Allergy to Recipe is many:many
 Recipe.belongsToMany(Allergy, {
+    through: 'RecipeAllergies',
     as: 'recipe_allergy',
-    through: 'RecipeAllergies'
 });
 
 Allergy.belongsToMany(Recipe, {
+    through: 'RecipeAllergies',
     as: 'recipe_allergy',
-    through: 'RecipeAllergies'
 });
 
-// 
+// User to Recipe is many:many
+Recipe.belongsToMany(User, {
+    through: Vote,
+    as: 'voted_recipes',
+    foreignKey: 'recipe_id',
+    onDelete: 'SET NULL'
+});
+
+User.belongsToMany(Recipe, {
+    through: Vote,
+    as: 'voted_recipes',
+    foreignKey: 'user_id',
+    onDelete: 'SET NULL'
+});
+
+Vote.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete: 'SET NULL'
+});
+
+Vote.belongsTo(Recipe, {
+    foreignKey: 'recipe_id',
+    onDelete: 'SET NULL'
+});
+
+
