@@ -5,11 +5,13 @@ router.get('/', (req, res) => {
         recipes: [
             {
                 name: 'fried chicken',
-                icons: ['dairy', 'shellfish']
+                icons: ['dairy', 'shellfish'],
+                description: 'yum yum delish fried chicken'
             }, 
             {
                 name: 'shrimp tacos',
-                icons: ['soy']
+                icons: ['soy'],
+                description: 'boy howdy dems are some good shrimp tacos'
             }
         ]
     })
