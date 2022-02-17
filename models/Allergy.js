@@ -48,3 +48,5 @@ Allergy.init({
     },
   },
 });
+
+module.exports = Allergy;
