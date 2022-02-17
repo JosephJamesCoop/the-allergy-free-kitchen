@@ -1,8 +1,8 @@
-// This model will be populated with recipes (posts that users make) and will be connected with both the Ingredient and Allergy models.
+// This model will be populated with recipes (posts that users make) and will be connected with the Allergy model.
 
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-const Allergy = require("../models/Allergy")
+const Allergy = require("./Allergy")
 
 class Recipe extends Model {
   static async addRecipe(body, models) {
@@ -64,16 +64,5 @@ Recipe.init({
       });
     },
   },
-  allergies: {
-      type: DataTypes.VIRTUAL,
-      get() {
-          
-      }
-  },
 },
-{
-    hooks: {
-        // function to look through allergies just before adding a recipe and determine if any ingredients in the recipe match any in an allergy. Then if an ingredient matches it creates an association in the Ingredient model.
-    }
-}
 );

@@ -1,6 +1,6 @@
 // This model is populated with all filterable allergies and is connected with the Recipe and Ingredient models
 
-const { Model, DataTypes } = require("sequelize");
+const { Model, DataTypes, VIRTUAL } = require("sequelize");
 const sequelize = require("../config/connection");
 
 class Allergy extends Model {
