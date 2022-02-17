@@ -1,5 +1,5 @@
 // This model will be populated with recipes that users voted on, and will be connected with the Recipe and User models.
-const { Model, Datatypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Vote extends Model {}
@@ -7,12 +7,12 @@ class Vote extends Model {}
 Vote.init(
     {
         id: {
-            type: Datatypes.INTEGER,
+            type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
         user_id: { 
-            type: Datatypes.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'user',
@@ -20,7 +20,7 @@ Vote.init(
             }
         },
         recipe_id: { 
-            type: Datatypes.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'recipe',
