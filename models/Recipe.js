@@ -72,6 +72,12 @@ Recipe.init({
     }
   },
 },
+{
+  sequelize,
+  freezeTableName: true,
+  underscored: true,
+  modelName: 'recipe'
+}
 );
 
 module.exports = Recipe;

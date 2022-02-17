@@ -47,6 +47,14 @@ Allergy.init({
       });
     },
   },
-});
+},
+{
+  sequelize,
+  freezeTableName: true,
+  timestamps: false,
+  underscored: true,
+  modelName: 'allergy'
+}
+);
 
 module.exports = Allergy;
