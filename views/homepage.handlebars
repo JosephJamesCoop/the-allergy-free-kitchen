@@ -1,0 +1,10 @@
+{{> allergens }}
+<div class="container">
+    <h1>Top Recipes of the Week</h1>
+
+    <div id="top-recipes" class="d-flex flex-wrap">
+        {{#each recipes as |recipe|}}
+            {{> recipe-description}}
+        {{/each}}
+    </div>
+</div>
