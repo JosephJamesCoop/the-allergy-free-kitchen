@@ -3,6 +3,10 @@ const { Model, Datatypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
+const Recipe = require('../models/Recipe');
+const Vote = require('../models/Vote');
+const Allergy = require('../models/Allergy');
+
 class User extends Model {}
 
 User.init
