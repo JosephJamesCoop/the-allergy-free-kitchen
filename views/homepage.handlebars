@@ -1,8 +1,8 @@
 {{> allergens }}
-<div class="container">
-    <h1>Top Recipes of the Week</h1>
+<div class="container mt-5">
+    <h1 class="text-center">Top Recipes of the Week</h1>
 
-    <div id="top-recipes" class="d-flex flex-wrap">
+    <div id="top-recipes" class="d-flex flex-wrap justify-content-center mt-4">
         {{#each recipes as |recipe|}}
             {{> recipe-description}}
         {{/each}}

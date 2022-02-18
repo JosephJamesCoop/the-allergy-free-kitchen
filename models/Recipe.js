@@ -4,20 +4,7 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const inflection = require("inflection")
 
-class Recipe extends Model {
-
-  // static async addRecipe(body, models) {
-  //   try {
-  //     return await Recipe.create({
-  //       name: body.name,
-  //       description: body.description,
-  //       ingredients: body.ingredients,
-  //     });
-  //   } catch (err) {
-  //     return err;
-  //   }
-  // }
-}
+class Recipe extends Model {}
 
 Recipe.init({
   id: {
@@ -33,18 +20,7 @@ Recipe.init({
     validate: {
         len: [6],
     }
-
   },
-
-//  saved to copy info
-//   name: {
-//     type: DataTypes.STRING,
-//     allowNull: false,
-//     set(name) {
-//       return name[0].toUpperCase() + string.slice(1);
-//     },
-//   },
-
   description: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -65,23 +41,6 @@ Recipe.init({
     validate: {
       len: [3],
     },
-
-    //saved to copy info
-  //   get(ingredientString) {
-  //     return ingredientString.split(/[^A-Za-z ]/).map((ingredient) => {
-  //       return ingredient.trim();
-  //     });
-  //   },
-  // },
-  // ingredientsClean: {
-  //   type: DataTypes.VIRTUAL,
-  //   get() {
-  //     let cleanIngredients = this.ingredients.replace(/[0-9]/g, "");
-  //     return cleanIngredients.split(/[^A-Za-z ]/).map((ingredient) => {
-  //       return ingredient.trim();
-  //     });
-  //   },
-
   },
   user_id: {
     type: DataTypes.INTEGER,

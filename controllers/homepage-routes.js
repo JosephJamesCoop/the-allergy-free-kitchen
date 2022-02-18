@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Recipe, User, Vote } = require("../models");
+const { Recipe, User, Vote, Allergy } = require("../models");
 
 router.get("/", (req, res) => {
   console.log(req.session);
@@ -24,9 +24,13 @@ router.get("/", (req, res) => {
         model: User,
         attributes: ["username"],
       },
+      {
+        model: Allergy, 
+        as: 'allergies'
+      }
     ],
   })
-    .then((dbRecipeData) => {
+    .then(async (dbRecipeData) => {
       // pass a single recipe object into the homepage template
       const recipes = dbRecipeData.map((recipe) => recipe.get({ plain: true }));
       res.render("homepage", { recipes, loggedIn: req.session.loggedIn });
@@ -36,23 +40,6 @@ router.get("/", (req, res) => {
       res.status(500).json(err);
     });
 });
-
-// router.get('/', (req, res) => {
-//     res.render('homepage', {
-//         recipes: [
-//             {
-//                 name: 'fried chicken',
-//                 icons: ['dairy', 'shellfish'],
-//                 description: 'yum yum delish fried chicken'
-//             }, 
-//             {
-//                 name: 'shrimp tacos',
-//                 icons: ['soy'],
-//                 description: 'boy howdy dems are some good shrimp tacos'
-//             }
-//         ]
-//     })
-// })
 
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
