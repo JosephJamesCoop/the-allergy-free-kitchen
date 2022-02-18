@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Recipe, User, UPVote, DownVote, Comment } = require('../../models');
+const { Recipe, User, Vote, DownVote, Comment } = require('../../models');
 const sequelize = require('../../config/connection');
 const error500 = err => {
   console.log(err);
@@ -26,19 +26,7 @@ const include = [
   }
 ]
 
-// insomnia test GET /
-router.get('/', (req, res) => {
-  Recipe.findAll(
-    { if (req.body.allergy_id = 1) {
-    attributes: attributes,
-    order: [['upvote_count', 'ASC']],
-    include: include,
-    }})
-    .then(dbRecipeData => if (dbRecipeData.allergy_id = )
-      
-      res.json(dbRecipeData))
-    .catch(error500);
-});
+// insomnia test GET 
 
 //insomnia test GET/recipe/1
 router.get('/:id', (req, res) => {
@@ -110,5 +98,34 @@ router.delete('/:id', (req, res) => {
     })
     .catch(error500);
 });
+router.get('/', async (req, res) => {
+    try {
+        console.log('=============================');
+        const allergyData = await Allergy.findAll({
+            attributes: [
+                'id',
+                'name',
+                'description',
+                'ingredients'
+            ],
+            include: [
+                {
+                    model: Recipe,
+                    attributes: ['id', 'name', 'ingredients'],
+                    include: {
+                        model: User,
+                        attributes: ['username']
+                    }
+                }
+            ]
+        });
+
+        res.json(allergyData);
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+})
 
 module.exports = router;
