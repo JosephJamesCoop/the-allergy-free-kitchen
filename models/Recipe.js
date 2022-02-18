@@ -3,7 +3,6 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const inflection = require("inflection")
-const Allergy = require("./Allergy")
 
 class Recipe extends Model {
   static async addRecipe(body, models) {
@@ -29,9 +28,6 @@ Recipe.init({
   name: {
     type: DataTypes.STRING,
     allowNull: false,
-    set(name) {
-      return name[0].toUpperCase() + string.slice(1);
-    },
   },
   description: {
     type: DataTypes.STRING,
@@ -58,8 +54,8 @@ Recipe.init({
   },
   ingredientsClean: {
     type: DataTypes.VIRTUAL,
-    get() {
-      let alphaOnlyIngredients = this.ingredients.replace(/[0-9]/g, "");
+    get(ingredientString) {
+      let alphaOnlyIngredients = ingredientString.replace(/[0-9]/g, "");
       let alphaIngredientArr = alphaOnlyIngredients.split(/[^A-Za-z ]/)
       let pluralIngredientsArr = alphaIngredientArr.map((ingredientInfo) => {
         return ingredientInfo[ingredientInfo.length - 1].trim()
