@@ -1,1 +1,0 @@
-// This model will be populated with user star selections that they make on recipes they are saving for later. It will be connected with the Recipe and User models.
