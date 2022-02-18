@@ -4,9 +4,7 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const inflection = require("inflection")
 
-class Recipe extends Model {
-  
-}
+class Recipe extends Model {}
 
 Recipe.init({
   id: {
@@ -18,10 +16,17 @@ Recipe.init({
   name: {
     type: DataTypes.STRING,
     allowNull: false,
+
+    validate: {
+        len: [6],
+    }
   },
   description: {
     type: DataTypes.STRING,
-    allowNull: true,
+    allowNull: false,
+    validate: {
+        len: [6],
+    }
   },
   instructions: {
     type: DataTypes.STRING,

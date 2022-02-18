@@ -28,7 +28,7 @@ Allergy.init({
     type: DataTypes.STRING,
     allowNull: false,
     set(name) {
-      return name[0].toUpperCase() + string.slice(1);
+      this.setDataValue('name', name[0].toUpperCase() + name.slice(1))
     },
   },
   description: {
