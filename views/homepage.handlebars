@@ -2,7 +2,7 @@
 <div class="container">
     <h1>Top Recipes of the Week</h1>
 
-    <div id="top-recipes" class="d-flex flex-wrap">
+    <div id="top-recipes" class="d-flex flex-wrap justify-content-between">
         {{#each recipes as |recipe|}}
             {{> recipe-description}}
         {{/each}}

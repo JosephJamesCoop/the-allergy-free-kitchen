@@ -1,9 +1,10 @@
-<div class="recipe w-50">
-    <h2>{{ name }}</h2>
-    <div class="simple-border">
-        <p>{{ description }}</p>
-    </div>
-    {{#each icons }}
+<div class="recipe card">
+    <div class="card-body">
+        <h5 class="card-title">{{ name }}</h5>
+        <p class="card-text">{{ description }}</p>
+        {{#each icons }}
         <img class="allergen-icon" src="/icons/{{ this }}.png" alt="{{ this }}">
-    {{/each}}
+        {{/each}}
+    </div>
+
 </div>
