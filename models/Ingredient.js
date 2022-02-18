@@ -1,1 +1,0 @@
-// This model will link Allergy with Recipe and User with Allergy so that users can filter for recipes that avoid their specific allergy.

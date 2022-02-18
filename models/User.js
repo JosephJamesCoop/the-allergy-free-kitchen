@@ -22,6 +22,14 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false
         },
+        first_name: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        last_name: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -56,4 +64,6 @@ User.init(
     modelName: 'user'
     }
 );
+
+module.exports = User;
 // User is connected with Allergy so that each user can list their allergies and be recommended recipes by the site that don't contain their allergens.
