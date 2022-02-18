@@ -5,17 +5,17 @@ const sequelize = require("../config/connection");
 const Allergy = require("./Allergy")
 
 class Recipe extends Model {
-  static async addRecipe(body, models) {
-    try {
-      return await Recipe.create({
-        name: body.name,
-        description: body.description,
-        ingredients: body.ingredients,
-      });
-    } catch (err) {
-      return err;
-    }
-  }
+  // static async addRecipe(body, models) {
+  //   try {
+  //     return await Recipe.create({
+  //       name: body.name,
+  //       description: body.description,
+  //       ingredients: body.ingredients,
+  //     });
+  //   } catch (err) {
+  //     return err;
+  //   }
+  // }
 }
 
 Recipe.init({
@@ -28,13 +28,26 @@ Recipe.init({
   name: {
     type: DataTypes.STRING,
     allowNull: false,
-    set(name) {
-      return name[0].toUpperCase() + string.slice(1);
-    },
+    validate: {
+        len: [6],
+    }
   },
+
+//  saved to copy info
+//   name: {
+//     type: DataTypes.STRING,
+//     allowNull: false,
+//     set(name) {
+//       return name[0].toUpperCase() + string.slice(1);
+//     },
+//   },
+
   description: {
     type: DataTypes.STRING,
-    allowNull: true,
+    allowNull: false,
+    validate: {
+        len: [6],
+    }
   },
   instructions: {
     type: DataTypes.STRING,
@@ -49,20 +62,21 @@ Recipe.init({
     validate: {
       len: [3],
     },
-    get(ingredientString) {
-      return ingredientString.split(/[^A-Za-z ]/).map((ingredient) => {
-        return ingredient.trim();
-      });
-    },
-  },
-  ingredientsClean: {
-    type: DataTypes.VIRTUAL,
-    get() {
-      let cleanIngredients = this.ingredients.replace(/[0-9]/g, "");
-      return cleanIngredients.split(/[^A-Za-z ]/).map((ingredient) => {
-        return ingredient.trim();
-      });
-    },
+    //saved to copy info
+  //   get(ingredientString) {
+  //     return ingredientString.split(/[^A-Za-z ]/).map((ingredient) => {
+  //       return ingredient.trim();
+  //     });
+  //   },
+  // },
+  // ingredientsClean: {
+  //   type: DataTypes.VIRTUAL,
+  //   get() {
+  //     let cleanIngredients = this.ingredients.replace(/[0-9]/g, "");
+  //     return cleanIngredients.split(/[^A-Za-z ]/).map((ingredient) => {
+  //       return ingredient.trim();
+  //     });
+  //   },
   },
   user_id: {
     type: DataTypes.INTEGER,
