@@ -48,16 +48,24 @@ Recipe.init({
     validate: {
       len: [3],
     },
-    get(ingredientString) {
-      return ingredientString.split(/[^A-Za-z ]/).map((ingredient) => {
-        return ingredient.trim();
+    get() {
+      const rawValue = this.getDataValue('ingredients');
+      let alphaOnlyIngredients = rawValue.replace(/[0-9]/g, "");
+      let alphaIngredientArr = alphaOnlyIngredients.split(/[^A-Za-z ]/);
+      let pluralIngredientsArr = alphaIngredientArr.map((ingredientInfo) => {
+        return ingredientInfo.split(' ').splice(-1).join('');
       });
+      let ingredientsArr = pluralIngredientsArr.map((pluralIngredient) => {
+        return inflection.singularize(pluralIngredient);
+      });
+      return ingredientsArr;
     },
   },
   ingredientsClean: {
     type: DataTypes.VIRTUAL,
-    get(ingredientString) {
-      let alphaOnlyIngredients = ingredientString.replace(/[0-9]/g, "");
+    get() {
+      const rawValue = this.getDataValue('ingredients');
+      let alphaOnlyIngredients = rawValue.replace(/[0-9]/g, "");
       let alphaIngredientArr = alphaOnlyIngredients.split(/[^A-Za-z ]/)
       let pluralIngredientsArr = alphaIngredientArr.map((ingredientInfo) => {
         return ingredientInfo[ingredientInfo.length - 1].trim()
