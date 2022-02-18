@@ -2,9 +2,10 @@
 
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-const Allergy = require("./Allergy")
+const inflection = require("inflection")
 
 class Recipe extends Model {
+
   // static async addRecipe(body, models) {
   //   try {
   //     return await Recipe.create({
@@ -28,9 +29,11 @@ Recipe.init({
   name: {
     type: DataTypes.STRING,
     allowNull: false,
+
     validate: {
         len: [6],
     }
+
   },
 
 //  saved to copy info
@@ -62,6 +65,7 @@ Recipe.init({
     validate: {
       len: [3],
     },
+
     //saved to copy info
   //   get(ingredientString) {
   //     return ingredientString.split(/[^A-Za-z ]/).map((ingredient) => {
@@ -77,6 +81,7 @@ Recipe.init({
   //       return ingredient.trim();
   //     });
   //   },
+
   },
   user_id: {
     type: DataTypes.INTEGER,
@@ -84,7 +89,7 @@ Recipe.init({
       model: 'user',
       key: 'id'
     }
-  },
+  }
 },
 {
   sequelize,
