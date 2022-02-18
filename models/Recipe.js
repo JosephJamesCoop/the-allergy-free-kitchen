@@ -5,19 +5,18 @@ const sequelize = require("../config/connection");
 const inflection = require("inflection")
 
 class Recipe extends Model {
-  static async addRecipe(body, models) {
-    try {
-      return await Recipe.create({
-        name: body.name,
-        description: body.description,
-        instructions: body.instructions,
-        ingredients: body.ingredients,
-        user_id: body.user_id
-      });
-    } catch (err) {
-      return err;
-    }
-  }
+
+  // static async addRecipe(body, models) {
+  //   try {
+  //     return await Recipe.create({
+  //       name: body.name,
+  //       description: body.description,
+  //       ingredients: body.ingredients,
+  //     });
+  //   } catch (err) {
+  //     return err;
+  //   }
+  // }
 }
 
 Recipe.init({
@@ -30,10 +29,28 @@ Recipe.init({
   name: {
     type: DataTypes.STRING,
     allowNull: false,
+
+    validate: {
+        len: [6],
+    }
+
   },
+
+//  saved to copy info
+//   name: {
+//     type: DataTypes.STRING,
+//     allowNull: false,
+//     set(name) {
+//       return name[0].toUpperCase() + string.slice(1);
+//     },
+//   },
+
   description: {
     type: DataTypes.STRING,
-    allowNull: true,
+    allowNull: false,
+    validate: {
+        len: [6],
+    }
   },
   instructions: {
     type: DataTypes.STRING,
@@ -48,24 +65,23 @@ Recipe.init({
     validate: {
       len: [3],
     },
-    get(ingredientString) {
-      return ingredientString.split(/[^A-Za-z ]/).map((ingredient) => {
-        return ingredient.trim();
-      });
-    },
-  },
-  ingredientsClean: {
-    type: DataTypes.VIRTUAL,
-    get(ingredientString) {
-      let alphaOnlyIngredients = ingredientString.replace(/[0-9]/g, "");
-      let alphaIngredientArr = alphaOnlyIngredients.split(/[^A-Za-z ]/)
-      let pluralIngredientsArr = alphaIngredientArr.map((ingredientInfo) => {
-        return ingredientInfo[ingredientInfo.length - 1].trim()
-      });
-      return pluralIngredientsArr.map((ingredient) => {
-        inflection.singularize(ingredient);
-      });
-    }
+
+    //saved to copy info
+  //   get(ingredientString) {
+  //     return ingredientString.split(/[^A-Za-z ]/).map((ingredient) => {
+  //       return ingredient.trim();
+  //     });
+  //   },
+  // },
+  // ingredientsClean: {
+  //   type: DataTypes.VIRTUAL,
+  //   get() {
+  //     let cleanIngredients = this.ingredients.replace(/[0-9]/g, "");
+  //     return cleanIngredients.split(/[^A-Za-z ]/).map((ingredient) => {
+  //       return ingredient.trim();
+  //     });
+  //   },
+
   },
   user_id: {
     type: DataTypes.INTEGER,
