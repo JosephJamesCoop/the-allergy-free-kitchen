@@ -10,7 +10,9 @@ class Recipe extends Model {
       return await Recipe.create({
         name: body.name,
         description: body.description,
+        instructions: body.instructions,
         ingredients: body.ingredients,
+        user_id: body.user_id
       });
     } catch (err) {
       return err;
