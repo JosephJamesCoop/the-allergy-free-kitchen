@@ -1,11 +1,12 @@
 {
   "name": "the-allergy-free-kitchen",
   "version": "1.0.0",
-  "description": "",
+  "description": "Allergy-based recipe network",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "watch": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -28,5 +29,8 @@
     "inflection": "^1.13.2",
     "mysql2": "^2.3.3",
     "sequelize": "^6.16.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
