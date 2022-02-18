@@ -36,11 +36,6 @@ Recipe.init({
     validate: {
       len: [3],
     },
-    get() {
-      const rawValue = this.getDataValue('ingredients');
-      let ingredientsArr = rawValue.split(/[^A-Za-z ]/);
-      return ingredientsArr;
-    }
   },
   ingredientsClean: {
     type: DataTypes.VIRTUAL,
@@ -52,6 +47,10 @@ Recipe.init({
         return ingredientInfo.split(' ').splice(-1).join('');
       });
       let ingredientsArr = pluralIngredientsArr.map((pluralIngredient) => {
+        if (pluralIngredient === "") {
+          return pluralIngredient === 0;
+        }
+        pluralIngredient.trim();
         return inflection.singularize(pluralIngredient);
       });
       return ingredientsArr;
