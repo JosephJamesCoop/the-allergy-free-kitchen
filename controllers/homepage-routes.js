@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Recipe, User, Vote } = require("../models");
+const { Recipe, User, Vote, Allergy } = require("../models");
 
 router.get("/", (req, res) => {
   console.log(req.session);
@@ -24,9 +24,13 @@ router.get("/", (req, res) => {
         model: User,
         attributes: ["username"],
       },
+      {
+        model: Allergy, 
+        as: 'allergies'
+      }
     ],
   })
-    .then((dbRecipeData) => {
+    .then(async (dbRecipeData) => {
       // pass a single recipe object into the homepage template
       const recipes = dbRecipeData.map((recipe) => recipe.get({ plain: true }));
       res.render("homepage", { recipes, loggedIn: req.session.loggedIn });

@@ -19,12 +19,12 @@ User.hasMany(Recipe, {
 // Allergy to Recipe is many:many
 Recipe.belongsToMany(Allergy, {
   through: "RecipeAllergies",
-  as: "recipe_allergy",
+  as: "allergies",
 });
 
 Allergy.belongsToMany(Recipe, {
   through: "RecipeAllergies",
-  as: "recipe_allergy",
+  as: "recipes",
 });
 
 // User to Recipe is many:many
