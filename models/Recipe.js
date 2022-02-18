@@ -35,6 +35,11 @@ Recipe.init({
     allowNull: false,
     validate: {
       len: [3],
+    },
+    get() {
+      const rawValue = this.getDataValue('ingredients');
+      let ingredientsArr = rawValue.split(/[^A-Za-z ]/);
+      return ingredientsArr;
     }
   },
   ingredientsClean: {
