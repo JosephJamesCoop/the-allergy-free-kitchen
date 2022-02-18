@@ -5,19 +5,7 @@ const sequelize = require("../config/connection");
 const inflection = require("inflection")
 
 class Recipe extends Model {
-  static async addRecipe(body, models) {
-    try {
-      return await Recipe.create({
-        name: body.name,
-        description: body.description,
-        instructions: body.instructions,
-        ingredients: body.ingredients,
-        user_id: body.user_id
-      });
-    } catch (err) {
-      return err;
-    }
-  }
+  
 }
 
 Recipe.init({
@@ -47,7 +35,10 @@ Recipe.init({
     allowNull: false,
     validate: {
       len: [3],
-    },
+    }
+  },
+  ingredientsClean: {
+    type: DataTypes.VIRTUAL,
     get() {
       const rawValue = this.getDataValue('ingredients');
       let alphaOnlyIngredients = rawValue.replace(/[0-9]/g, "");
@@ -60,20 +51,6 @@ Recipe.init({
       });
       return ingredientsArr;
     },
-  },
-  ingredientsClean: {
-    type: DataTypes.VIRTUAL,
-    get() {
-      const rawValue = this.getDataValue('ingredients');
-      let alphaOnlyIngredients = rawValue.replace(/[0-9]/g, "");
-      let alphaIngredientArr = alphaOnlyIngredients.split(/[^A-Za-z ]/)
-      let pluralIngredientsArr = alphaIngredientArr.map((ingredientInfo) => {
-        return ingredientInfo[ingredientInfo.length - 1].trim()
-      });
-      return pluralIngredientsArr.map((ingredient) => {
-        inflection.singularize(ingredient);
-      });
-    }
   },
   user_id: {
     type: DataTypes.INTEGER,
