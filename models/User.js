@@ -20,7 +20,7 @@ User.init(
         },
         username: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         first_name: {
             type: DataTypes.STRING,
@@ -32,7 +32,7 @@ User.init(
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             unique: true,
             validate: {
                 isEmail: true
@@ -40,7 +40,7 @@ User.init(
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 len: [6]
             }

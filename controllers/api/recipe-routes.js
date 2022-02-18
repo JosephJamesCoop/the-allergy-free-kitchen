@@ -1,41 +1,31 @@
 const router = require('express').Router();
-const { Recipe, User, UPVote, DownVote, Comment } = require('../../models');
+const { Recipe, User, Vote } = require('../../models');
 const sequelize = require('../../config/connection');
-const error500 = err => {
-  console.log(err);
-  res.status(500).json(err);
-};
-const attributes = [
-  'id', 'name', 'description', 'ingredients', 'steps', 'user_id', "allergy_id"
-  // , 'photo' 
-  [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Recipe.id = upvote.Recipe_id)'), 'upvote_count'],
-  [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Recipe.id = downvote.Recipe_id)'), 'downvote_count']
-];
-const include = [
-  // {
-  //   model: Comment,
-  //   attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
-  //   include: {
-  //     model: User,
-  //     attributes: ['username']
-  //   }
-  // },
-  {
-    model: User,
-    attributes: ['username']
-  }
-]
+
+
 
 // insomnia test GET /
 router.get('/', (req, res) => {
   Recipe.findAll({
-    attributes: attributes,
-    order: [['upvote_count', 'ASC']],
-    include: include
+    attributes: [
+      'id', 'name', 'description', 'instructions', 'ingredients', 'user_id',
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE recipe.id = vote.recipe_id)'), 'vote_count']
+    ],
+    order: [['created_at', 'DESC']],
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
   })
     .then(dbRecipeData => res.json(dbRecipeData))
-    .catch(error500);
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
+
 
 //insomnia test GET/recipe/1
 router.get('/:id', (req, res) => {
@@ -43,45 +33,56 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id
     },
-    attributes: attributes,
-    order: [['upvote_count', 'ASC']],
-    include: include
-  })
-    .then(dbRecipeData => {
-      if (!dbRecipeData) {
-        res.status(404).json({ message: 'No Recipe found with this id' });
-        return;
+    attributes: [
+      'id', 'name', 'description', 'instructions', 'ingredients', 'user_id',
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE recipe.id = vote.recipe_id)'), 'vote_count']
+    ],
+    order: [['created_at', 'DESC']],
+    include: [
+      {
+        model: User,
+        attributes: ['username']
       }
-      res.json(dbRecipeData);
-    })
-    .catch(error500);
+    ]
+  })
+    .then(dbRecipeData => res.json(dbRecipeData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 //insomnia test POST /
 router.post('/', (req, res) => {
-  // insomnia testing {"name": "chicken", "description": "Yummy baked chicken", "ingredients": "chicken, salt, pepper", "instructions": "step 1. preheat oven, step 2. sprinkle with salt and pepper, step 3. bake the chicken", "user_id": "1", "allergy_id:": 1,3}
+  // insomnia testing {"name": "chicken", "description": "Yummy baked chicken", "instructions": "step 1. preheat oven, step 2. sprinkle with salt and pepper, step 3. bake the chicken", "ingredients": "chicken, salt, pepper", "user_id": "1"}
   Recipe.create({
     name: req.body.name,
     description: req.body.description,
-    ingredients: req.body.ingredients,
     instructions: req.body.instructions,
-    user_id: req.body.user_id,
-    allergy_id: req.body.allergy_id
+    ingredients: req.body.ingredients,
+    user_id: req.body.user_id
     // photo: req.body.photo
   })
-    .then(dbRecipeData => res.json(dbRecipeData))
-    .catch(error500);
+  .then(dbRecipeData => res.json(dbRecipeData))
+  .catch(err => {
+    console.log("============================================= finding my error =========================", err);
+    res.status(500).json(err);
+  });
 });
 
 // insomnia test route PUT /api/users/1
 router.put('/:id', (req, res) => {
   // insomnia testing {"description": "Yummy baked chicken", "ingredients": "chicken, salt, pepper, shake 'n bake",}
-  Recipe.update(req.body, {
-    individualHooks: true,
+  Recipe.update(
+    {
+      name: req.body.name
+    },
+    {
     where: {
       id: req.params.id
     }
-  })
+  }
+  )
     .then(dbRecipeData => {
       if (!dbRecipeData) {
         res.status(404).json({ message: 'No Recipe found with this id' });
@@ -89,7 +90,10 @@ router.put('/:id', (req, res) => {
       }
       res.json(dbRecipeData);
     })
-    .catch(error500);
+    .catch(err => {
+  console.log(err);
+  res.status(500).json(err);
+});
 });
 
 router.delete('/:id', (req, res) => {
@@ -105,7 +109,10 @@ router.delete('/:id', (req, res) => {
       }
       res.json(dbRecipeData);
     })
-    .catch(error500);
+    .catch(err => {
+  console.log(err);
+  res.status(500).json(err);
+});
 });
 
 module.exports = router;
