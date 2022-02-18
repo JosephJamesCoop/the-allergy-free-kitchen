@@ -2,7 +2,7 @@
 
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-const Allergy = require("./Allergy")
+const inflection = require("inflection")
 
 class Recipe extends Model {
   static async addRecipe(body, models) {
@@ -10,7 +10,9 @@ class Recipe extends Model {
       return await Recipe.create({
         name: body.name,
         description: body.description,
+        instructions: body.instructions,
         ingredients: body.ingredients,
+        user_id: body.user_id
       });
     } catch (err) {
       return err;
@@ -28,9 +30,6 @@ Recipe.init({
   name: {
     type: DataTypes.STRING,
     allowNull: false,
-    set(name) {
-      return name[0].toUpperCase() + string.slice(1);
-    },
   },
   description: {
     type: DataTypes.STRING,
@@ -44,7 +43,7 @@ Recipe.init({
     }
   },
   ingredients: {
-    type: DataTypes.STRING(500),
+    type: DataTypes.STRING,
     allowNull: false,
     validate: {
       len: [3],
@@ -57,12 +56,16 @@ Recipe.init({
   },
   ingredientsClean: {
     type: DataTypes.VIRTUAL,
-    get() {
-      let cleanIngredients = this.ingredients.replace(/[0-9]/g, "");
-      return cleanIngredients.split(/[^A-Za-z ]/).map((ingredient) => {
-        return ingredient.trim();
+    get(ingredientString) {
+      let alphaOnlyIngredients = ingredientString.replace(/[0-9]/g, "");
+      let alphaIngredientArr = alphaOnlyIngredients.split(/[^A-Za-z ]/)
+      let pluralIngredientsArr = alphaIngredientArr.map((ingredientInfo) => {
+        return ingredientInfo[ingredientInfo.length - 1].trim()
       });
-    },
+      return pluralIngredientsArr.map((ingredient) => {
+        inflection.singularize(ingredient);
+      });
+    }
   },
   user_id: {
     type: DataTypes.INTEGER,
@@ -70,7 +73,7 @@ Recipe.init({
       model: 'user',
       key: 'id'
     }
-  },
+  }
 },
 {
   sequelize,
