@@ -45,7 +45,7 @@ Recipe.init({
     }
   },
   ingredients: {
-    type: DataTypes.STRING(500),
+    type: DataTypes.STRING,
     allowNull: false,
     validate: {
       len: [3],
