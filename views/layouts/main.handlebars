@@ -13,10 +13,18 @@
         <nav class="navbar navbar-light bg-light">
             <div class="container-fluid d-flex">
                 <a href="/" class="navbar-brand">The Allergy Free Kitchen</a>
-                <button class="btn btn-outline-success" onclick="location.href='/login'" type="button">Login</button>
+                {{#if loggedIn}}
+                <button id="logout" class="btn-no-style">logout</button>
+                {{else}}
+                <a href="/login">login</a>
+                {{/if}}
             </div>
         </nav>
     </header>
     {{{body}}}
+
+    {{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}}
 </body>
 </html>
