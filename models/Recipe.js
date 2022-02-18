@@ -2,6 +2,7 @@
 
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
+const inflection = require("inflection")
 const Allergy = require("./Allergy")
 
 class Recipe extends Model {
@@ -58,11 +59,15 @@ Recipe.init({
   ingredientsClean: {
     type: DataTypes.VIRTUAL,
     get() {
-      let cleanIngredients = this.ingredients.replace(/[0-9]/g, "");
-      return cleanIngredients.split(/[^A-Za-z ]/).map((ingredient) => {
-        return ingredient.trim();
+      let alphaOnlyIngredients = this.ingredients.replace(/[0-9]/g, "");
+      let alphaIngredientArr = alphaOnlyIngredients.split(/[^A-Za-z ]/)
+      let pluralIngredientsArr = alphaIngredientArr.map((ingredientInfo) => {
+        return ingredientInfo[ingredientInfo.length - 1].trim()
       });
-    },
+      return pluralIngredientsArr.map((ingredient) => {
+        inflection.singularize(ingredient);
+      });
+    }
   },
   user_id: {
     type: DataTypes.INTEGER,
@@ -70,7 +75,7 @@ Recipe.init({
       model: 'user',
       key: 'id'
     }
-  },
+  }
 },
 {
   sequelize,
