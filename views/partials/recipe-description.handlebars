@@ -1,10 +1,18 @@
-<div class="recipe card">
-    <div class="card-body">
-        <h5 class="card-title">{{ name }}</h5>
+<div class="recipe card m-3">
+    <div class="card-body d-flex flex-column">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="card-title">
+                <a href="/recipe/{{ id }}">{{ name }}</a>
+            </h5>
+            <h5>⬆️ {{ vote_count }}</h5>
+        </div>
+        
+        <h6 class="card-subtitle mb-2 text-muted">Submitted by: {{ user.username }}</h6>
         <p class="card-text">{{ description }}</p>
-        {{#each icons }}
-        <img class="allergen-icon" src="/icons/{{ this }}.png" alt="{{ this }}">
+        <div class="d-flex">
+        {{#each allergies }}
+        <img class="allergen-icon" src="/icons/{{ this.name }}.png" alt="{{ this.name }}">
         {{/each}}
+        </div>        
     </div>
-
 </div>
