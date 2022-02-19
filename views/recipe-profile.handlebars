@@ -1,22 +1,22 @@
 <article class="container recipe-article">
     <div class="row">
-        <h3>
-            {{name}}
+        <h3 class="text-center">
+            {{recipe.name}}
         </h3>
     </div>
     <div class="row">
-        <div id="description" class="col-1">
+        <div id="description" class="col">
             <p>
                 {{>single-recipe-description}}
             </p>
             <div id="ingredients">
-                {{>ingredients ingredient}}
+                {{>ingredients}}
             </div>
         </div>
-        <div class="col-1">
-            {{instructions}}
+        <div class="col d-flex">
+            <div class="flex-wrap">
+                {{recipe.instructions}}
+            </div>
         </div>
     </div>
 </article>
-
-<script src="/javascript/recipe-profile.js"></script>

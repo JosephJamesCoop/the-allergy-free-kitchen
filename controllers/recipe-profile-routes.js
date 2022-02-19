@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const { Recipe, User, Allergy, Vote } = require("../models");
-const sequelize = require("../../config/connection");
+const sequelize = require("../config/connection");
+const { Recipe, User, Allergy } = require("../models");
 
-router.get("recipe/:id", (req, res) => {
+router.get("/:id", (req, res) => {
   Recipe.findOne({
     where: {
       id: req.params.id,
@@ -22,19 +22,17 @@ router.get("recipe/:id", (req, res) => {
         "vote_count",
       ],
     ],
-    order: [["created_at", "DESC"]],
     include: [
       {
         model: User,
         attributes: ["username"],
       },
-    ],
-    include: [
       {
         model: Allergy,
-        attributes: ["id", "name", "description", "ingredients"],
-      },
-    ],
+        as: 'allergies',
+        attributes: ["id", "name", "description", "ingredients"]
+      }
+    ]
   })
     .then((dbRecipeData) => {
       if (!dbRecipeData) {
@@ -54,3 +52,5 @@ router.get("recipe/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
+
+module.exports = router;

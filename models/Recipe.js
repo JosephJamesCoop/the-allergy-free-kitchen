@@ -41,6 +41,17 @@ Recipe.init({
     validate: {
       len: [3],
     },
+    get() {
+      const rawValue = this.getDataValue('ingredients');
+      let ingredientArr = rawValue.split(/[^A-Za-z ]/);
+      let cleanIngredientArr = ingredientArr.filter((ingredient) => {
+        if (ingredient === "") {
+          return false;
+        }
+        return ingredient.trim();
+      });
+      return cleanIngredientArr;
+    },
   },
   ingredientsClean: {
     type: DataTypes.VIRTUAL,
