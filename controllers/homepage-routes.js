@@ -57,4 +57,12 @@ router.get('/signUp', (req, res) => {
   res.render('signUp');
 });
 
+// router.get('/signUp', (req, res) => {
+//   if (req.session.loggedIn) {
+//     res.redirect('/');
+//     return;
+//   }
+//   res.render('signUp');
+// });
+
 module.exports = router;
