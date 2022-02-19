@@ -13,21 +13,27 @@ const seed = async () => {
         description: "delish shrimp tacos",
         instructions: "1.season shrimp and fry 2. add toppings",
         ingredients: "shrimp, tortillas, lime, avocado, cabbage, cilantro",
-        user_id: 1
+        user_id: 1,
+        shellfish: 1,
+        nuts: 0
     })
     await Recipe.create({
         name: "tofu scramble",
         description: "delish tofu scramble",
         instructions: "1.drain and press tofu 2.crumble tofu and season 3. scramble in a pan and add veggies",
         ingredients: "tofu, onions, spinach, peppers",
-        user_id: 1
+        user_id: 1,
+        vegetarian: 1,
+        nuts: 0
     })
     await Recipe.create({
         name: "peanut butter",
         description: "delish homemade peanut butter",
         instructions: "1.grind peanuts in food processor until smooth 2.add salt to taste",
         ingredients: "peanuts, salt",
-        user_id: 1
+        user_id: 1,
+        nuts: 1,
+        dairy: 0
     })
     await Recipe.create({
         name: "feta dip",
