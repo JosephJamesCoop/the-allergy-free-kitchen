@@ -42,6 +42,25 @@ Recipe.init({
       len: [3],
     },
   },
+  ingredientsClean: {
+    type: DataTypes.VIRTUAL,
+    get() {
+      const rawValue = this.getDataValue('ingredients');
+      let alphaOnlyIngredients = rawValue.replace(/[0-9]/g, "");
+      let alphaIngredientArr = alphaOnlyIngredients.split(/[^A-Za-z ]/);
+      let pluralIngredientsArr = alphaIngredientArr.map((ingredientInfo) => {
+        return ingredientInfo.split(' ').splice(-1).join('');
+      });
+      let ingredientsArr = pluralIngredientsArr.map((pluralIngredient) => {
+        if (pluralIngredient === "") {
+          return pluralIngredient === 0;
+        }
+        pluralIngredient.trim();
+        return inflection.singularize(pluralIngredient);
+      });
+      return ingredientsArr;
+    },
+  },
   user_id: {
     type: DataTypes.INTEGER,
     references: {
