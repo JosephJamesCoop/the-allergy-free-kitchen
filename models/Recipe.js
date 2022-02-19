@@ -33,7 +33,18 @@ Recipe.init({
     allowNull: false,
     validate: {
         len: [6],
-    }
+    },
+    get() {
+      const rawValue = this.getDataValue('instructions');
+      let instructionsArr = rawValue.split(/[^A-Za-z ]/);
+      let cleanInstructionsArr = instructionsArr.filter((instruction) => {
+        if (instruction === "") {
+          return false;
+        }
+        return instruction.trim();
+      });
+      return cleanInstructionsArr;
+    },
   },
   ingredients: {
     type: DataTypes.STRING,
