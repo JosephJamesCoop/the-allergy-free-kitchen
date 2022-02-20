@@ -1,0 +1,12 @@
+<div class="recipe card m-3">
+    <div class="card-body d-flex flex-column">
+        
+        <h6 class="card-subtitle mb-2 text-muted">Submitted by: {{user.id}}</h6>
+        <p class="card-text">{{ description }}</p>
+        <div class="d-flex">
+        {{#each allergies }}
+        <img class="allergen-icon" src="/icons/{{ this.name }}.png" alt="{{ this.name }}">
+        {{/each}}
+        </div>
+    </div>
+</div>
