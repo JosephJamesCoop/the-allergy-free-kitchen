@@ -41,10 +41,16 @@ Allergy.init({
     validate: {
       len: [3],
     },
-    get(ingredientString) {
-      return ingredientString.split(/[^A-Za-z ]/).map((ingredient) => {
+    get() {
+      const rawValue = this.getDataValue('ingredients');
+      let ingredientArr = rawValue.split(/[^A-Za-z ]/);
+      let cleanIngredientArr = ingredientArr.filter((ingredient) => {
+        if (ingredient === "") {
+          return false;
+        }
         return ingredient.trim();
       });
+      return cleanIngredientArr;
     },
   },
 },
