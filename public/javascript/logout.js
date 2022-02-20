@@ -12,3 +12,9 @@ async function logout() {
 }
 
 document.querySelector('#logout').addEventListener('click', logout);
+
+async function addRecipe() {
+  document.location.replace('/add-recipe');
+}
+
+document.querySelector('#addRecipe').addEventListener('click', addRecipe);
