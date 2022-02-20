@@ -8,7 +8,7 @@ const sequelize = require('../../config/connection');
 router.get('/', (req, res) => {
   Recipe.findAll({
     attributes: [
-      'id', 'name', 'description', 'instructions', 'ingredients', 'ingredientsClean', 'user_id',
+      'id', 'name', 'description', 'instructions', 'ingredients', 'ingredientsClean', 'dairy', 'soy', 'nuts', 'celiac', 'shellfish', 'vegetarian', 'user_id',
       [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE recipe.id = vote.recipe_id)'), 'vote_count']
     ],
     order: [['created_at', 'DESC']],
@@ -39,7 +39,7 @@ router.get('/:id', (req, res) => {
       id: req.params.id
     },
     attributes: [
-      'id', 'name', 'description', 'instructions', 'ingredients', 'user_id',
+      'id', 'name', 'description', 'instructions', 'ingredients', 'dairy', 'soy', 'nuts', 'celiac', 'shellfish', 'vegetarian', 'user_id',
       [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE recipe.id = vote.recipe_id)'), 'vote_count']
     ],
     order: [['created_at', 'DESC']],
