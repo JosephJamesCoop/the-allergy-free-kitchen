@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const router = require("express").Router();
 const sequelize = require("../config/connection");
 const { Recipe, User, Vote, Allergy } = require("../models");
@@ -12,7 +13,7 @@ const catchError = (err) => { console.log(err); res.status(500).json(err); }
 router.get("/dairy", (req, res) => {
   Recipe.findAll({
     where: {
-      dairy: 1
+      [Op.not]: {dairy: 1}
     },
     attributes: attributes,
     include: include,
@@ -25,7 +26,7 @@ router.get("/dairy", (req, res) => {
 router.get("/soy", (req, res) => {
   Recipe.findAll({
     where: {
-      soy: 1
+      [Op.not]: {soy: 1}
     },
     attributes: attributes,
     include: include,
@@ -38,7 +39,7 @@ router.get("/soy", (req, res) => {
 router.get("/nuts", (req, res) => {
   Recipe.findAll({
     where: {
-      nuts: 1
+      [Op.not]: {nuts: 1}
     },
     attributes: attributes,
     include: include,
@@ -51,7 +52,7 @@ router.get("/nuts", (req, res) => {
 router.get("/celiac", (req, res) => {
   Recipe.findAll({
     where: {
-      celiac: 1
+      [Op.not]: {celiac: 1}
     },
     attributes: attributes,
     include: include,
@@ -64,7 +65,7 @@ router.get("/celiac", (req, res) => {
 router.get("/shellfish", (req, res) => {
   Recipe.findAll({
     where: {
-      shellfish: 1
+      [Op.not]: {shellfish: 1}
     },
     attributes: attributes,
     include: include,
