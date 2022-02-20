@@ -83,6 +83,31 @@ Recipe.init({
       return ingredientsArr;
     },
   },
+  dairy: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
+  soy: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
+  nuts: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
+  celiac: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
+  shellfish: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
+  vegetarian: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
+
   user_id: {
     type: DataTypes.INTEGER,
     references: {
