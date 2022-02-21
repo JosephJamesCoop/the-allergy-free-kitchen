@@ -30,7 +30,7 @@ router.get("/", (req, res) => {
       }
     ],
   })
-    .then(async (dbRecipeData) => {
+    .then((dbRecipeData) => {
       // pass a single recipe object into the homepage template
       const recipes = dbRecipeData.map((recipe) => recipe.get({ plain: true }));
       res.render("homepage", { recipes, loggedIn: req.session.loggedIn });
