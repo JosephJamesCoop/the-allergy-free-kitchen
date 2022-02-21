@@ -80,7 +80,7 @@ const seed = async () => {
         ingredients: "walnut, almond, hazelnut, pecan, cashew pistachio, coconut"
     })
     await Allergy.create({
-        name: "Celiac Disease", 
+        name: "Celiac", 
         description: "an immune reaction to eating gluten", 
         ingredients: "wheat, barley, rye"
     })
