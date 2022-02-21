@@ -5,11 +5,14 @@ async function voteClickHandler(event) {
         window.location.toString().split('/').length - 1
     ];
 
-    const response = await fetch('/api/vote/vote-routes', {
+    const response = await fetch('/api/vote', {
         method: 'PUT',
         body: JSON.stringify({
             post_id: id
         }),
+        headers: {
+            'Content-Type': 'application/json'
+          }
     })
     if (response.ok) {
         document.location.reload();
@@ -18,4 +21,7 @@ async function voteClickHandler(event) {
     }
 }
 
-document.querySelector('.vote-btn').addEventListener('click', voteClickHandler);
+document.querySelector('.vote_count').addEventListener('click', voteClickHandler);
+
+// vote up buttons fetch
+// connect to file that vote button is in
