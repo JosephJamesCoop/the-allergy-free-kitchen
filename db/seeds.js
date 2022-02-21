@@ -14,9 +14,6 @@ const seed = async () => {
         instructions: "1.season shrimp and fry 2. add toppings",
         ingredients: "shrimp, tortillas, lime, avocado, cabbage, cilantro",
         user_id: 1,
-        nuts: 0, 
-        soy: 0, 
-        vegetarian: 0
     })
     await Recipe.create({
         name: "tofu scramble",
@@ -24,11 +21,6 @@ const seed = async () => {
         instructions: "1.drain and press tofu 2.crumble tofu and season 3. scramble in a pan and add veggies",
         ingredients: "tofu, onions, spinach, peppers",
         user_id: 1,
-        vegetarian: 0,
-        nuts: 0, 
-        dairy: 0, 
-        shellfish: 0, 
-        celiac: 0
     })
     await Recipe.create({
         name: "peanut butter",
@@ -36,23 +28,13 @@ const seed = async () => {
         instructions: "1.grind peanuts in food processor until smooth 2.add salt to taste",
         ingredients: "peanuts, salt",
         user_id: 1,
-        dairy: 0, 
-        soy: 0, 
-        celiac: 0, 
-        shellfish: 0, 
-        vegetarian: 0
     })
     await Recipe.create({
         name: "feta dip",
         description: "delish feta dip",
         instructions: "1.combine feta, olive oil, and herbs 2.stir",
         ingredients: "feta, olive oil, basil, thyme",
-        user_id: 1, 
-        soy: 0, 
-        nuts: 0, 
-        celiac: 0, 
-        shellfish: 0, 
-        vegetarian: 0
+        user_id: 1,
     })
     await Recipe.create({
         name: "fried chicken",
@@ -60,9 +42,6 @@ const seed = async () => {
         instructions: "1.dredge chicken in buttermilk, then flour 2. fry",
         ingredients: "chicken, buttermilk, flour",
         user_id: 1,
-        soy: 0,
-        nuts: 0,
-        shellfish: 0
     })
     await Allergy.create({
         name: "Dairy", 
