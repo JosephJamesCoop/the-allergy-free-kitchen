@@ -18,7 +18,10 @@
       <label for="recipe-instuctions">Instructions</label>
       <input type="text" id="recipe-instructions" name="recipe-instructions" />
   </div>
-      <button type="submit" id="add-recipe">Submit</button>
+      <button type="submit">Submit</button>
   </div>
 </form>
+</section>
+{{#if loggedIn}}
 <script src="/javascript/add-recipe.js"></script>
+{{/if}}
