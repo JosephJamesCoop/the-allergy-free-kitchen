@@ -37,7 +37,7 @@ router.get("/", withAuth, (req, res) => {
     .then(async (dbRecipeData) => {
       // pass a single recipe object into the homepage template
       const recipes = dbRecipeData.map((recipe) => recipe.get({ plain: true }));
-      res.render("userprofile", { recipes, loggedIn: true });
+      res.render("userprofile", { recipes, loggedIn: true, name: req.session.username });
     })
     .catch((err) => {
       console.log(err);
