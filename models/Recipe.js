@@ -33,13 +33,35 @@ Recipe.init({
     allowNull: false,
     validate: {
         len: [6],
-    }
+    },
+    get() {
+      const rawValue = this.getDataValue('instructions');
+      let instructionsArr = rawValue.split(/[^A-Za-z ]/);
+      let cleanInstructionsArr = instructionsArr.filter((instruction) => {
+        if (instruction === "") {
+          return false;
+        }
+        return instruction.trim();
+      });
+      return cleanInstructionsArr;
+    },
   },
   ingredients: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
       len: [3],
+    },
+    get() {
+      const rawValue = this.getDataValue('ingredients');
+      let ingredientArr = rawValue.split(/[^A-Za-z ]/);
+      let cleanIngredientArr = ingredientArr.filter((ingredient) => {
+        if (ingredient === "") {
+          return false;
+        }
+        return ingredient.trim();
+      });
+      return cleanIngredientArr;
     },
   },
   ingredientsClean: {
@@ -61,6 +83,31 @@ Recipe.init({
       return ingredientsArr;
     },
   },
+  dairy: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
+  soy: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
+  nuts: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
+  celiac: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
+  shellfish: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
+  vegetarian: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
+
   user_id: {
     type: DataTypes.INTEGER,
     references: {
