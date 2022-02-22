@@ -1,5 +1,9 @@
 //const recipe_post_l = document.querySelector('textarea[name="recipe-body"]');
-    
+async function recipe() {
+    document.location.replace('/api/recipe');
+  }
+  
+  document.querySelector('#add-recipe').addEventListener('click', recipe);
 
 async function recipeFormHandler(event) {
     event.preventDefault();
@@ -37,4 +41,4 @@ async function recipeFormHandler(event) {
   }
 }
 
-document.querySelector('#add-recipe').addEventListener('click', recipeFormHandler);
+document.querySelector('add-recipe-form').addEventListener('click', recipeFormHandler);
