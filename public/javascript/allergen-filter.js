@@ -15,7 +15,7 @@ document.querySelector('#soy').addEventListener('click', soy);
 
 //nuts filter button
 async function nuts() {
-  document.location.replace('/allergy/nuts');
+  document.location.replace('/allergy/nut');
 }
 
 document.querySelector('#nuts').addEventListener('click', nuts);
