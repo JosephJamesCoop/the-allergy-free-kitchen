@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { Post, User, Vote } = require('../../models');
+const { Post, User, Vote, Recipe } = require('../../models');
 const sequelize = require('../../config/connection');
+const { response } = require('express');
 const error500 = err => {
   console.log(err);
   res.status(500).json(err);
@@ -31,5 +32,33 @@ router.put('/vote', (req, res) => {
 //       .catch(error500);
 //   }
 // });
+
+// /api/votes/:id
+router.post('/:id', async (req, res) => {
+  try {
+    if (req.session.loggedIn) {
+      const recipe = await Recipe.findByPk(req.params.id, {
+        include: User
+      })
+
+      const {count} = await Vote.findAndCountAll({
+        where: {
+          user_id: recipe.user.id, 
+          recipe_id: req.params.id
+        }
+      })
+      if(count == 0) {
+        await Vote.create({
+          user_id: recipe.user.id, 
+          recipe_id: req.params.id
+        })
+      }
+      res.status(200).send()
+    }
+  } catch (err) {
+    console.log(err)
+    res.status(500).send()
+  }
+});
 
 module.exports = router;
