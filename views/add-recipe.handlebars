@@ -1,6 +1,7 @@
 <section>
     <h2>Add a new recipe</h2>
 
+{{#if loggedIn}}
 <form class="add-recipe-form">
   <div>
     <label for="recipe-title">Title</label>
@@ -15,7 +16,7 @@
       <input type="text" id="recipe-ingredients" name="recipe-ingredients" />
   </div>
     <div>
-      <label for="recipe-instuctions">Instructions</label>
+      <label for="recipe-instructions">Instructions</label>
       <input type="text" id="recipe-instructions" name="recipe-instructions" />
   </div>
       <button type="submit">Submit</button>
@@ -23,3 +24,10 @@
 </form>
 </section>
 <script src="/javascript/add-recipe.js"></script>
+{{else}}
+<div>
+  <p>
+    Oops! Looks like you need to create a user profile still. Click the Sign Up button above to get access to your very own kitchen.
+  </p>
+</div>
+{{/if}}
