@@ -1,25 +1,20 @@
-//const recipe_post_l = document.querySelector('textarea[name="recipe-body"]');
-async function recipe() {
-    document.location.replace('/api/recipe');
-  }
-  
-  document.querySelector('#add-recipe').addEventListener('click', recipe);
+const recipe_post_l = document.querySelector('textarea[name="recipe-body"]');
 
 async function recipeFormHandler(event) {
     event.preventDefault();
     
- //  const recipe_id = window.loction.toString().split('/')[
- //   window.loction.toString().split('/').length - 1
-//];
+   const recipe_id = window.loction.toString().split('/')[
+    window.loction.toString().split('/').length - 1
+];
 
-  //  const recipe_post = recipe_post_l.value.trim();
+   const recipe_post = recipe_post_l.value.trim();
     const title = document.querySelector('input[name="recipe-title"]').value;
     const description = document.querySelector('input[name="recipe-description"]').value;
     const ingredients = document.querySelector('input[name="recipe-ingredients"]').value;
     const instructions = document.querySelector('input[name="recipe-instructions"]').value;
  
     if (title && description && ingredients && instructions) {
-    const response = await fetch(`/api/recipes`, {
+    const response = await fetch(`api/recipes`, {
         method: 'POST',
         body: JSON.stringify({
             title,
@@ -29,7 +24,7 @@ async function recipeFormHandler(event) {
         }),
         headers: { 
             'Content-Type': 'application/json'}
-    })
+    });
     // create object and fetch method/post
 
       
@@ -41,4 +36,10 @@ async function recipeFormHandler(event) {
   }
 }
 
-document.querySelector('add-recipe-form').addEventListener('click', recipeFormHandler);
+
+async function addRecipe() {
+  document.location.replace('/add-recipe');
+}
+
+document.querySelector('#addRecipe').addEventListener('click', addRecipe);
+document.querySelector('.add-recipe-form').addEventListener('click', recipeFormHandler);

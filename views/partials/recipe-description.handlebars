@@ -10,9 +10,8 @@
         <h6 class="card-subtitle mb-2 text-muted">Submitted by: {{ user.username }}</h6>
         <p class="card-text">{{ description }}</p>
         <div class="d-flex">
-        {{#each allergies }}
-        <img class="allergen-icon" src="/icons/{{ this.
-        name }}.png" alt="{{ this.name }}">
+        {{#each allergies}}
+        <img class="allergen-icon" src="/icons/{{ this.name }}.png" alt="{{ this.name }}">
         {{/each}}
         </div>        
     </div>
