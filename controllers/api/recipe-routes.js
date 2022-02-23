@@ -66,7 +66,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   // insomnia testing {"name": "chicken", "description": "Yummy baked chicken", "instructions": "step 1. preheat oven, step 2. sprinkle with salt and pepper, step 3. bake the chicken", "ingredients": "chicken, salt, pepper", "user_id": "1"}
   Recipe.create({
-    name: req.body.name,
+    name: req.body.title,
     description: req.body.description,
     instructions: req.body.instructions,
     ingredients: req.body.ingredients,
