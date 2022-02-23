@@ -20,17 +20,23 @@
                 <a href="/userprofile" class="navbar-brand">Welcome To {{ name }}'s Kitchen</a>
                 <button id="addRecipe" class="btn-no-style">Create a Recipe</button>
                 <button id="logout" class="btn-no-style">logout</button>
+
+                <script>
+                    async function recipe() {
+                        document.location.replace('/recipe/create');
+                    }
+
+                    document.querySelector('#add-recipe').addEventListener('click', recipe);
+                </script>
                 {{else}}
                 <button id="login" class="btn-no-style">login</button>
-   
+
                 {{/if}}
             </div>
         </nav>
     </header>
     {{{body}}}
-    
-<script src="/javascript/add-recipe.js"></script>   
-<script src="/javascript/allergen-filter.js"></script>
+    <script src="/javascript/allergen-filter.js"></script>
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{else}}
