@@ -77,4 +77,4 @@ const seed = async () => {
     const recipe = await Recipe.findByPk(1);
     await recipe.addAllergy(allergy);
 }
-seed();
+seed()
