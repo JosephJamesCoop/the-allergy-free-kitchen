@@ -18,7 +18,7 @@
                 <a href="/" class="navbar-brand">The Allergy Free Kitchen</a>
                 {{#if loggedIn}}
                 <a href="/userprofile" class="navbar-brand">Welcome To {{ name }}'s Kitchen</a>
-                <button id="add-recipe" class="btn-no-style">Create a Recipe</button>
+                <button id="addRecipe" class="btn-no-style">Create a Recipe</button>
                 <button id="logout" class="btn-no-style">logout</button>
                 {{else}}
                 <button id="login" class="btn-no-style">login</button>
@@ -29,7 +29,7 @@
     </header>
     {{{body}}}
     
- <script src="/javascript/add-recipe.js"></script>   
+<script src="/javascript/add-recipe.js"></script>   
 <script src="/javascript/allergen-filter.js"></script>
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>

@@ -17,4 +17,4 @@ async function addRecipe() {
   document.location.replace('/add-recipe');
 }
 
-//ocument.querySelector('#addRecipe').addEventListener('click', addRecipe);
+document.querySelector('#addRecipe').addEventListener('click', addRecipe);
