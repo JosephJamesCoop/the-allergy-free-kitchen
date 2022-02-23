@@ -57,4 +57,11 @@ router.get('/signUp', (req, res) => {
   res.render('signUp');
 });
 
+router.get("/add-recipe", (req, res) => {
+
+  res.render("add-recipe", {
+    loggedIn: req.session.loggedIn,
+  });
+})
+
 module.exports = router;

@@ -3,8 +3,8 @@ const recipe_post_l = document.querySelector('textarea[name="recipe-body"]');
 async function recipeFormHandler(event) {
     event.preventDefault();
     
-   const recipe_id = window.loction.toString().split('/')[
-    window.loction.toString().split('/').length - 1
+   const recipe_id = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
 ];
 
    const recipe_post = recipe_post_l.value.trim();
