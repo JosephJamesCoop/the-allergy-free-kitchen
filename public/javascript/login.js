@@ -1,9 +1,3 @@
-async function login() {
-  document.location.replace('/login');
-}
-
-document.querySelector('#login').addEventListener('click', login);
-
 async function loginFormHandler(event) {
   event.preventDefault();
 
@@ -27,5 +21,3 @@ async function loginFormHandler(event) {
     }
   }
 }
-
-document.querySelector('.login-form').addEventListener('submit', loginFormHandler);

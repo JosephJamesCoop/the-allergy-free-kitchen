@@ -4,7 +4,6 @@ const { Recipe, User, Vote, Allergy } = require("../models");
 const withAuth = require('../utils/auth');
 
 router.get("/", withAuth, (req, res) => {
-  console.log(req.session);
   Recipe.findAll({
     where: {
       user_id: req.session.user_id

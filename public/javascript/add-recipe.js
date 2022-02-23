@@ -36,10 +36,4 @@ async function recipeFormHandler(event) {
   }
 }
 
-
-async function addRecipe() {
-  document.location.replace('/add-recipe');
-}
-
-document.querySelector('#addRecipe').addEventListener('click', addRecipe);
 document.querySelector('.add-recipe-form').addEventListener('click', recipeFormHandler);
