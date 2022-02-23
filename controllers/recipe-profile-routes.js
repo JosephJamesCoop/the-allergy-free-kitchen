@@ -41,10 +41,10 @@ router.get("/:id", (req, res) => {
       }
 
       const recipe = dbRecipeData.get({ plain: true });
-
       res.render("recipe-profile", {
         recipe,
         loggedIn: req.session.loggedIn,
+        name: recipe.user.username
       });
     })
     .catch((err) => {
