@@ -16,10 +16,10 @@ async function recipeFormHandler(event) {
     const response = await fetch(`api/recipes`, {
       method: "POST",
       body: JSON.stringify({
-        title,
+        name: title,
         description,
-        ingredients,
         instructions,
+        ingredients
       }),
       headers: {
         "Content-Type": "application/json",
