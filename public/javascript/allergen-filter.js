@@ -10,7 +10,7 @@ async function soy() {
 
 //nuts filter button
 async function nuts() {
-  document.location.replace('/allergy/nuts');
+  document.location.replace('/allergy/nut');
 }
 
 //celiac filter button
