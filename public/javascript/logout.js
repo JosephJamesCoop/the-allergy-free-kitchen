@@ -10,3 +10,9 @@ async function logout() {
     alert(response.statusText);
   }
 }
+
+document.querySelector('#logout').addEventListener('click', logout);
+
+async function addRecipe() {
+  document.location.replace('/add-recipe');
+}
