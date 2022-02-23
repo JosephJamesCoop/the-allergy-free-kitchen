@@ -1,9 +1,3 @@
-async function login() {
-  document.location.replace('/login');
-}
-
-document.querySelector('#login').addEventListener('click', login);
-
 async function loginFormHandler(event) {
   event.preventDefault();
 
