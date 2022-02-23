@@ -45,12 +45,4 @@ router.get("/", withAuth, (req, res) => {
     });
 });
 
-router.get('/recipe-profile', (req, res) => {
-  if (req.session.loggedIn) {
-    res.render('recipe-profile');
-    return;
-  }
-  res.redirect('/');
-});
-
 module.exports = router;
