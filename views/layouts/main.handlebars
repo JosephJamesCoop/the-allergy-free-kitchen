@@ -18,7 +18,7 @@
                 <a href="/" class="navbar-brand">The Allergy Free Kitchen</a>
                 {{#if loggedIn}}
                 <a href="/userprofile" class="navbar-brand">Welcome To <span class="fw-bold">{{ name }}</span>'s Kitchen</a>
-                <a href="/add-recipe" id="add-recipe" class="btn btn-secondary">Create a Recipe</a>
+                <a href="/userprofile/add-recipe" id="add-recipe" class="btn btn-secondary">Create a Recipe</a>
                 <button id="logout" class="btn block">logout</button>
                 {{else}}
                 <button id="login" class="btn block">login</button>
