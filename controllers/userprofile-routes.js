@@ -48,10 +48,12 @@ router.get('/add-recipe', (req, res) => {
   if (req.session.loggedIn) {
     res.render('add-recipe', {
       loggedIn: req.session.loggedIn,
-      name: req.session.username
+      name: req.session.username,
+      user_id: req.session.user_id
     });
     return;
   }
+  console.log(req.session)
   res.redirect('/');
 });
 
