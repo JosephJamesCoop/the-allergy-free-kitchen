@@ -28,12 +28,16 @@
         </nav>
     </header>
     {{{body}}}
-    
-<script src="/javascript/allergen-filter.js"></script>
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{else}}
-    <script src="/javascript/login.js"></script>
+    <script>
+        async function login() {
+            document.location.replace('/login');
+        }
+
+        document.querySelector('#login').addEventListener('click', login);
+    </script>
     {{/if}}
 </body>
 
