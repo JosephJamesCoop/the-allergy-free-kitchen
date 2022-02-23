@@ -13,7 +13,7 @@ async function recipeFormHandler(event) {
   ).value;
 
   if (title && description && ingredients && instructions) {
-    const response = await fetch(`api/recipes`, {
+    const response = await fetch(`../api/recipes`, {
       method: "POST",
       body: JSON.stringify({
         name: title,
