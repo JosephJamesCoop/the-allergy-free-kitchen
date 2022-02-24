@@ -37,7 +37,7 @@ Recipe.init({
     },
     get() {
       const rawValue = this.getDataValue('instructions');
-      let instructionsArr = rawValue.split(/[^A-Za-z ]/);
+      let instructionsArr = rawValue.split(/[^A-Za-z0-9 ]/);
       let cleanInstructionsArr = instructionsArr.filter((instruction) => {
         if (instruction === "") {
           return false;
