@@ -21,13 +21,13 @@ async function recipeFormHandler(event) {
 
   console.log(title, description, ingredients, instructions, allergens)
   if (title && description && ingredients && instructions) {
-    const response = await fetch(`../api/recipes`, {
+    const response = await fetch(`/api/recipes`, {
       method: "POST",
       body: JSON.stringify({
-        name: title,
+        title,
         description,
-        instructions,
-        ingredients,
+        instructions: instructions.join(", "),
+        ingredients: ingredients.join(", "),
         allergens
       }),
       headers: {
