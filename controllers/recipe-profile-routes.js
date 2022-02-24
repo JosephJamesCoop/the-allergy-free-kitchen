@@ -2,6 +2,16 @@ const router = require("express").Router();
 const sequelize = require("../config/connection");
 const { Recipe, User, Allergy } = require("../models");
 
+router.get('/create', (req, res) => {
+  if (req.session.loggedIn) {
+    res.render('add-recipe', {
+      loggedIn: req.session.loggedIn
+    });
+    return;
+  }
+  res.redirect('/login');
+});
+
 router.get("/:id", (req, res) => {
   Recipe.findOne({
     where: {

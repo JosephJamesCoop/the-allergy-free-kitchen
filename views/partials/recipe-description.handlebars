@@ -25,17 +25,13 @@
             method: 'post',
             headers: { 'Content-Type': 'application/json' }
         });
-
         if (response.ok) {
             document.location.reload()
         } else {
             alert(response.statusText);
         }
-
         {{else}}
         document.location.replace('/login')
-
         {{/if}}
-
     })
 </script>

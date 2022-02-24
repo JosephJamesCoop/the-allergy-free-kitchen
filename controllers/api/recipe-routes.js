@@ -65,17 +65,31 @@ router.get('/:id', (req, res) => {
 //insomnia test POST /
 router.post('/', (req, res) => {
   // insomnia testing {"name": "chicken", "description": "Yummy baked chicken", "instructions": "step 1. preheat oven, step 2. sprinkle with salt and pepper, step 3. bake the chicken", "ingredients": "chicken, salt, pepper", "user_id": "1"}
+  console.log(req.body)
   Recipe.create({
-    name: req.body.name,
+    name: req.body.title,
     description: req.body.description,
     instructions: req.body.instructions,
     ingredients: req.body.ingredients,
     user_id: req.session.user_id
-    // photo: req.body.photo
   })
-  .then(dbRecipeData => res.json(dbRecipeData))
+  .then(async dbRecipeData => {
+    
+    for (const allergen in req.body.allergens) {
+      if (req.body.allergens[allergen]) {
+        const allergy = await Allergy.findOne({
+          where: {
+            name: allergen[0].toUpperCase() + allergen.slice(1)
+          }
+        })
+        await dbRecipeData.addAllergy(allergy)
+      }
+    }
+
+    res.status(200).send()
+  })
   .catch(err => {
-    console.log("============================================= finding my error =========================", err);
+    console.log(err)
     res.status(500).json(err);
   });
 });

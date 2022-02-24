@@ -5,21 +5,30 @@ async function recipeFormHandler(event) {
   const description = document.querySelector(
     'input[name="recipe-description"]'
   ).value;
-  const ingredients = document.querySelector(
-    'input[name="recipe-ingredients"]'
-  ).value;
-  const instructions = document.querySelector(
-    'input[name="recipe-instructions"]'
-  ).value;
 
+  const ingredientsNodes = document.querySelectorAll(".recipe-ingredients")
+  const ingredients = Array.from(ingredientsNodes).map((ingredientNode) => ingredientNode.value).filter(ingredient => ingredient != "")
+
+  const instructionsNodes = document.querySelectorAll(".recipe-instructions")
+  const instructions = Array.from(instructionsNodes).map((instructionNode) => instructionNode.value).filter(instruction => instruction != "")
+
+  const allergenCheckNodes = document.querySelectorAll(".form-check-input")
+
+  let allergens = {};
+  Array.from(allergenCheckNodes).forEach(allergenCheckNode => {
+    allergens[allergenCheckNode.name] = allergenCheckNode.checked
+  })
+
+  console.log(title, description, ingredients, instructions, allergens)
   if (title && description && ingredients && instructions) {
-    const response = await fetch(`../api/recipes`, {
+    const response = await fetch(`/api/recipes`, {
       method: "POST",
       body: JSON.stringify({
-        name: title,
+        title,
         description,
-        instructions,
-        ingredients
+        instructions: instructions.join(", "),
+        ingredients: ingredients.join(", "),
+        allergens
       }),
       headers: {
         "Content-Type": "application/json",
@@ -37,4 +46,4 @@ async function recipeFormHandler(event) {
 
 document
   .querySelector("#add-recipe-form")
-  .addEventListener("click", recipeFormHandler);
+  .addEventListener("submit", recipeFormHandler);
