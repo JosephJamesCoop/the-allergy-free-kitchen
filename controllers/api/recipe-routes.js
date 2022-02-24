@@ -70,7 +70,7 @@ router.post('/', (req, res) => {
     description: req.body.description,
     instructions: req.body.instructions,
     ingredients: req.body.ingredients,
-    user_id: req.body.user_id
+    user_id: req.session.user_id
     // photo: req.body.photo
   })
   .then(dbRecipeData => res.json(dbRecipeData))
