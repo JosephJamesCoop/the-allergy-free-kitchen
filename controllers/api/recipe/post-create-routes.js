@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Recipe, Vote, Comment } = require('../../../models');
+const { User, Recipe, Vote } = require('../../../models');
 
 //insomnia test POST /
 router.post('/', (req, res) => {
@@ -9,7 +9,13 @@ router.post('/', (req, res) => {
     description: req.body.description,
     instructions: req.body.instructions,
     ingredients: req.body.ingredients,
-    user_id: req.body.user_id
+    dairy: req.body.dairy,
+    soy: req.body.soy,
+    nuts: req.body.nut,
+    celiac: req.body.celiac,
+    shellfish: req.body.shellfish,
+    vegetarian: req.body.vegetarian,
+    // user_id: req.session.user_id
     // photo: req.body.photo
   })
   .then(dbRecipeData => res.json(dbRecipeData))

@@ -1,42 +1,31 @@
 <section class="container">
     <h2>Add a new recipe</h2>
 
-{{#if loggedIn}}
-<form id="add-recipe-form">
-  <div class="d-flex align-center">
-    <div>
+
+<form class="addRecipeForm">
       <div class="card simple-border">
-          <label for="recipe-title">Title</label>
-          <input type="text" id="recipe-title" name="recipe-title" />
-          </div>
+          <label for="recipe-name">Name</label>
+          <input type="text" id="recipe-name" />
+      </div>
         <div class="card simple-border">
             <label for="recipe-description">Description</label>
-            <input type="text" id="recipe-description" name="recipe-description" />
+            <input type="text" id="recipe-description" />
         </div>
           <div class="card simple-border">
             <label for="recipe-ingredients">Ingredients (list with commas)</label>
-            <input type="text" id="recipe-ingredients" name="recipe-ingredients" />
+            <input type="text" id="recipe-ingredients"/>
         </div>
           <div class="card simple-border">
             <label for="recipe-instructions">Instructions</label>
-            <input type="text" id="recipe-instructions" name="recipe-instructions" />
+            <input type="text" id="recipe-instructions" />
         </div>
         <div>
           <h2>What type of allergens are your recipe free of?</h2>
 {{>allergy-chart}}
       </div>
-  </div>
+
             <button type="submit" class="btn block my-2">Submit</button>
-        </div>
-    </div>
-  </div>
 </form>
 </section>
+
 <script src="/javascript/add-recipe.js"></script>
-{{else}}
-<div>
-  <p>
-    Oops! Looks like you need to create a user profile still. Click the Sign Up button above to get access to your very own kitchen.
-  </p>
-</div>
-{{/if}}

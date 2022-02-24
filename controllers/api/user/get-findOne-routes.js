@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Recipe, Vote, Comment } = require('../../../models');
+const { User, Recipe, Vote } = require('../../../models');
 const error505 = err => {
   console.log(err);
   res.status(500).json(err);
@@ -22,15 +22,6 @@ router.get('/:id', (req, res) => {
         // , 'photo' 
       ]
       },
-      // Will add if time allows for it
-      // {
-      //   model: Comment,
-      //   attributes: ['id', 'comment_text', 'user_id', 'recipe_id', 'created_at'],
-      //   include: {
-      //     model: User,
-      //     attributes: ['username']
-      //   }
-      // },
       {
         model: Recipe,
         attributes: ['name'],

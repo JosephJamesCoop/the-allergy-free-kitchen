@@ -10,7 +10,6 @@ router.use('/', deleteRoutes);
 router.use('/', getFindAllRoutes);
 router.use('/', getFindOneRoutes);
 router.use('/', postCreateRoutes);
-
 router.use('/', putUpdateRoutes);
 
 module.exports = router;

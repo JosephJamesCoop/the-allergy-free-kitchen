@@ -1,9 +1,10 @@
-// This model will be populated with recipes (posts that users make) and will be connected with the Allergy model.
+// This model will be populated with recipes (recipes that users make) and will be connected with the Allergy model.
 
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const inflection = require("inflection")
 
+// the recipe model extends the sequelize model 
 class Recipe extends Model {}
 
 Recipe.init({
@@ -83,8 +84,32 @@ Recipe.init({
       return ingredientsArr;
     },
   },
+  dairy: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  soy: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  nuts: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  celiac: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  shellfish: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  vegetarian: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   user_id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     references: {
       model: 'user',
       key: 'id'

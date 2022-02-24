@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Recipe, Vote, Comment } = require('../../../models');
+const { User, Recipe, Vote, Allergy} = require('../../../models');
 const sequelize = require('../../../config/connection');
 
 //insomnia test GET/api/recipe/1

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Recipe, Vote, Comment } = require('../../../models');
+const { User, Recipe, Vote } = require('../../../models');
 const error505 = err => {
   console.log(err);
   res.status(500).json(err);
