@@ -20,22 +20,17 @@
 <script>
     document.getElementById('up-vote-button-{{ id }}').addEventListener('click', async (event) => {
         {{#if ../loggedIn}}
-
         const response = await fetch('/api/votes/{{ id }}', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' }
         });
-
         if (response.ok) {
             document.location.reload()
         } else {
             alert(response.statusText);
         }
-
         {{else}}
         document.location.replace('/login')
-
         {{/if}}
-
     })
 </script>
