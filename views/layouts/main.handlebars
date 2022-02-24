@@ -18,7 +18,7 @@
                 <a href="/" class="navbar-brand">The Allergy Free Kitchen</a>
                 {{#if loggedIn}}
                 <a href="/userprofile" class="navbar-brand">Welcome To <span class="fw-bold">{{ name }}</span>'s Kitchen</a>
-     
+
                 <button id="logout" class="btn block">logout</button>
                 {{else}}
                 <button id="login" class="btn block">login</button>
@@ -28,6 +28,8 @@
         </nav>
     </header>
     {{{body}}}
+    
+<script src="/javascript/allergen-filter.js"></script>
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{else}}

@@ -28,6 +28,8 @@ async function vegetarian() {
   document.location.replace('/allergy/vegetarian');
 }
 
+let urlPath = document.location.href.split("/");
+if (urlPath[3] === "" || urlPath[3] === "allergy" || urlPath[3] === "userprofile") {
   document.querySelector("#vegetarian").addEventListener("click", vegetarian);
   document.querySelector("#shellfish").addEventListener("click", shellfish);
   document.querySelector("#dairy").addEventListener("click", dairy);
