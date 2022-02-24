@@ -8,7 +8,7 @@ const sequelize = require('../../config/connection');
 router.get('/', (req, res) => {
   Recipe.findAll({
     attributes: [
-      'id', 'name', 'description', 'instructions', 'ingredients', 'ingredientsClean', 'dairy', 'soy', 'nuts', 'celiac', 'shellfish', 'vegetarian', 'user_id',
+      'id', 'name', 'description', 'instructions', 'ingredients', 'ingredientsClean', 'user_id',
       [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE recipe.id = vote.recipe_id)'), 'vote_count']
     ],
     order: [['created_at', 'DESC']],
@@ -32,14 +32,14 @@ router.get('/', (req, res) => {
 });
 
 
-//insomnia test GET/recipe/1
+//insomnia test GET/api/recipe/1
 router.get('/:id', (req, res) => {
   Recipe.findOne({
     where: {
       id: req.params.id
     },
     attributes: [
-      'id', 'name', 'description', 'instructions', 'ingredients', 'dairy', 'soy', 'nuts', 'celiac', 'shellfish', 'vegetarian', 'user_id',
+      'id', 'name', 'description', 'instructions', 'ingredients', 'user_id',
       [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE recipe.id = vote.recipe_id)'), 'vote_count']
     ],
     order: [['created_at', 'DESC']],
@@ -70,7 +70,7 @@ router.post('/', (req, res) => {
     description: req.body.description,
     instructions: req.body.instructions,
     ingredients: req.body.ingredients,
-    user_id: req.body.user_id
+    user_id: req.session.user_id
     // photo: req.body.photo
   })
   .then(dbRecipeData => res.json(dbRecipeData))
