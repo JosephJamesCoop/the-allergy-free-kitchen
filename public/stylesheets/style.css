@@ -54,12 +54,16 @@ nav {
 .titlePage:hover {
   color: #f8ce62;
 }
-.rightAlign {
-    margin-left: 15px;
+.color8 {
+    color: white;
 }
-.marginLeft {
-    margin-left: 150px;
-    margin-right: 15px;
+.color7 {
+    background-color: white;
+    color: black;
+}
+.color6 {
+    background-color: black;
+    color: white;
 }
 .color5 {
     background-color: #f8ce62;
@@ -91,4 +95,16 @@ nav {
 }
 .width {
     width: 50%;
+}
+.marg {
+    margin-left: 30%;
+}
+@media screen and (max-width: 600px) {
+    .marg {
+        margin-left: 0%;
+        margin-right: 5px;
+    }
+    .width1 {
+        width: 350px;
+}
 }

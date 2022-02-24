@@ -1,13 +1,13 @@
-<div class="recipe card color4 m-3">
+<div class="recipe card color2 m-3">
     <div class="card-body d-flex flex-column">
         <div class="d-flex w-100 justify-content-between">
             <h5 class="card-title">
-                <a class="btn color2 btn-secondary href="/recipe/{{ id }}">{{ name }}</a>
+                <a class="btn color5 btn-secondary" href="/recipe/{{ id }}">{{ name }}</a>
             </h5>
-            <h5 class="btn color5 btn-secondary" id="up-vote-button-{{ id }}">⬆️ {{ vote_count }}</h5>
+            <h5 class="btn color1 btn-secondary" id="up-vote-button-{{ id }}">⬆️ {{ vote_count }}</h5>
         </div>
 
-        <h6 class="card-subtitle mb-2 text-muted">Submitted by: {{ user.username }}</h6>
+        <h6 class="card-subtitle mb-2 color8">Submitted by: {{ user.username }}</h6>
         <p class="card-text">{{ description }}</p>
         <div class="d-flex">
             {{#each allergies }}
