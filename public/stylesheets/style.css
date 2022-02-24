@@ -25,3 +25,70 @@ nav {
 .recipe {
     width: 576px;
 }
+#logout {
+    margin-left: 5%;
+}
+.card {
+    background-color: #E2DDB6;
+}
+.btn-outline-secondary {
+    background-color: #B08C45;
+    color: white;
+}
+.btn-outline-secondary:hover{
+    background-color: #e2ddb6;
+    color: black;
+}
+.btn-secondary {
+    background-color: #437c90;
+}
+.btn-secondary:hover {
+    background-color: #f8ce62;
+}
+.titlePage {
+    color: black;
+    font-size: larger;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
+}
+.titlePage:hover {
+  color: #f8ce62;
+}
+.rightAlign {
+    margin-left: 15px;
+}
+.marginLeft {
+    margin-left: 150px;
+    margin-right: 15px;
+}
+.color5 {
+    background-color: #f8ce62;
+    color: black;
+}
+.color4 {
+    background-color: #B08C45;
+    color: white;
+}
+.color3 {
+    background-color: #E2DDB6;
+    color: black;
+}
+.color2 {
+    background-color: #429E9B;
+    color: black;
+}
+.color1 {
+    background-color: #437c90;
+    color: white;
+}
+.btn1 {
+    background-color: #e2ddb6;
+    color: black;
+}
+.btn1:hover{
+    background-color: #437c90;
+    color: white;
+}
+.width {
+    width: 50%;
+}
