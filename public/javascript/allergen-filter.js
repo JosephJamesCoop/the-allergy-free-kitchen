@@ -35,4 +35,5 @@ if (urlPath[3] === "" || urlPath[3] === "allergy" || urlPath[3] === "userprofile
   document.querySelector("#dairy").addEventListener("click", dairy);
   document.querySelector("#soy").addEventListener("click", soy);
   document.querySelector("#nuts").addEventListener("click", nuts);
-  document.querySelector("#celiac").addEventListener("click", celiac);
+  document.querySelector("#celiac").addEventListener("click", celiac)
+};
