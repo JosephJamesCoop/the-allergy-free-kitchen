@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Vote, Recipe } = require('../../models');
+const { User, Vote, Recipe } = require('../../models');
 const sequelize = require('../../config/connection');
 const { response } = require('express');
 const error500 = err => {
@@ -7,31 +7,18 @@ const error500 = err => {
   res.status(500).json(err);
 };
 
-// insomnia test PUT /api/posts/upvote
+// insomnia test PUT /api/recipes/upvote
 router.put('/vote', (req, res) => {
   // make sure the session exists first
   if (req.session) {
     // pass session id along with all destructured properties on req.body
-    Post.upvote({ ...req.body, user_id: req.session.user_id }, { UpVote, 
+    Recipe.upvote({ ...req.body, user_id: req.session.user_id }, { UpVote, 
       // Comment, 
       User })
       .then(updatedVoteData => res.json(updatedVoteData))
       .catch(error500);
   }
 });
-
-// // insomnia test PUT /api/posts/downvote
-// router.put('/downvote', (req, res) => {
-//   // make sure the session exists first
-//   if (req.session) {
-//     // pass session id along with all destructured properties on req.body
-//     Post.downvote({ ...req.body, user_id: req.session.user_id }, { DownVote, 
-//       // Comment, 
-//       User })
-//       .then(updatedVoteData => res.json(updatedVoteData))
-//       .catch(error500);
-//   }
-// });
 
 // /api/votes/:id
 router.post('/:id', async (req, res) => {

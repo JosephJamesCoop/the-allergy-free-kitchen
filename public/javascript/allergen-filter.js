@@ -28,12 +28,9 @@ async function vegetarian() {
   document.location.replace('/allergy/vegetarian');
 }
 
-let urlPath = document.location.href.split("/");
-if (urlPath[3] === "" || urlPath[3] === "allergy") {
   document.querySelector("#vegetarian").addEventListener("click", vegetarian);
   document.querySelector("#shellfish").addEventListener("click", shellfish);
   document.querySelector("#dairy").addEventListener("click", dairy);
   document.querySelector("#soy").addEventListener("click", soy);
   document.querySelector("#nuts").addEventListener("click", nuts);
   document.querySelector("#celiac").addEventListener("click", celiac);
-}
