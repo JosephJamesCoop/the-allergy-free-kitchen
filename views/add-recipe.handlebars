@@ -1,0 +1,25 @@
+<section>
+    <h2>Add a new recipe</h2>
+
+<form class="add-recipe-form">
+  <div>
+    <label for="recipe-title">Title</label>
+    <input type="text" id="recipe-title" name="recipe-title" />
+    </div>
+  <div>
+      <label for="recipe-description">Description</label>
+      <input type="text" id="recipe-description" name="recipe-description" />
+  </div>
+{{>ingredients-instructions}}
+  <div>
+      <div>
+          <h2>What type of allengens are your recipe free of?</h2>
+{{>allergy-chart}}
+      </div>
+  </div>
+      <button type="submit">Submit</button>
+  </div>
+</form>
+</section>
+<script src="/javascript/add-recipe.js"></script>
+<script src="./javascript/allergen-filter.js"></script>

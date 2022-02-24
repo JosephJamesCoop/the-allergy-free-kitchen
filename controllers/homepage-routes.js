@@ -56,4 +56,12 @@ router.get('/signUp', (req, res) => {
   res.render('signUp');
 });
 
+router.get('/add-recipe', (req, res) => {
+  if (req.session.loggedIn) {
+    res.render('add-recipe', {loggedIn: req.session.loggedIn, name: req.session.username });
+    return;
+  }
+  res.redirect('/');
+});
+
 module.exports = router;

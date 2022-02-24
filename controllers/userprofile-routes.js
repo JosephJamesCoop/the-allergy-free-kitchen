@@ -44,12 +44,6 @@ router.get("/", withAuth, (req, res) => {
     });
 });
 
-router.get('/add-recipe', (req, res) => {
-  if (req.session.loggedIn) {
-    res.render('add-recipe');
-    return;
-  }
-  res.redirect('/');
-});
+
 
 module.exports = router;
