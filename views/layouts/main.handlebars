@@ -13,34 +13,33 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar navbar-light">
             <div class="container-fluid d-flex">
                 <a href="/" class="navbar-brand">The Allergy Free Kitchen</a>
                 {{#if loggedIn}}
-                <a href="/userprofile" class="navbar-brand">Welcome To {{ name }}'s Kitchen</a>
-                <button id="addRecipe" class="btn-no-style">Create a Recipe</button>
-                <button id="logout" class="btn-no-style">logout</button>
-
-                <script>
-                    async function recipe() {
-                        document.location.replace('/recipe/create');
-                    }
-
-                    document.querySelector('#add-recipe').addEventListener('click', recipe);
-                </script>
+                <a href="/userprofile" class="navbar-brand">Welcome To <span class="fw-bold">{{ name }}</span>'s Kitchen</a>
+                <a href="/userprofile/add-recipe" id="add-recipe" class="btn btn-secondary">Create a Recipe</a>
+                <button id="logout" class="btn block">logout</button>
                 {{else}}
-                <button id="login" class="btn-no-style">login</button>
-
+                <button id="login" class="btn block">login</button>
+   
                 {{/if}}
             </div>
         </nav>
     </header>
     {{{body}}}
-    <script src="/javascript/allergen-filter.js"></script>
+    
+<script src="/javascript/allergen-filter.js"></script>
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{else}}
-    <script src="/javascript/login.js"></script>
+    <script>
+        async function login() {
+            document.location.replace('/login');
+        }
+
+        document.querySelector('#login').addEventListener('click', login);
+    </script>
     {{/if}}
 </body>
 

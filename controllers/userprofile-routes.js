@@ -3,8 +3,7 @@ const sequelize = require("../config/connection");
 const { Recipe, User, Vote, Allergy } = require("../models");
 const withAuth = require('../utils/auth');
 
-router.get("/", withAuth, (req, res) => {
-  console.log(req.session);
+router.get("/", (req, res) => {
   Recipe.findAll({
     where: {
       user_id: req.session.user_id
@@ -43,6 +42,19 @@ router.get("/", withAuth, (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+router.get('/add-recipe', (req, res) => {
+  if (req.session.loggedIn) {
+    res.render('add-recipe', {
+      loggedIn: req.session.loggedIn,
+      name: req.session.username,
+      user_id: req.session.user_id
+    });
+    return;
+  }
+  console.log(req.session)
+  res.redirect('/');
 });
 
 module.exports = router;

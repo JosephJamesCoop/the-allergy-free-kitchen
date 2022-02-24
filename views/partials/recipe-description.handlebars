@@ -4,15 +4,38 @@
             <h5 class="card-title">
                 <a href="/recipe/{{ id }}">{{ name }}</a>
             </h5>
-            <h5>⬆️ {{ vote_count }}</h5>
+            <h5 id="up-vote-button-{{ id }}">⬆️ {{ vote_count }}</h5>
         </div>
-        
+
         <h6 class="card-subtitle mb-2 text-muted">Submitted by: {{ user.username }}</h6>
         <p class="card-text">{{ description }}</p>
         <div class="d-flex">
-        {{#each allergies}}
-        <img class="allergen-icon" src="/icons/{{ this.name }}.png" alt="{{ this.name }}">
-        {{/each}}
-        </div>        
+            {{#each allergies }}
+            <img class="allergen-icon" src="/icons/{{ this.name }}.png" alt="{{ this.name }}">
+            {{/each}}
+        </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('up-vote-button-{{ id }}').addEventListener('click', async (event) => {
+        {{#if ../loggedIn}}
+
+        const response = await fetch('/api/votes/{{ id }}', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (response.ok) {
+            document.location.reload()
+        } else {
+            alert(response.statusText);
+        }
+
+        {{else}}
+        document.location.replace('/login')
+
+        {{/if}}
+
+    })
+</script>
