@@ -1,36 +1,28 @@
 <section class="container">
-    <h2>Add a new recipe</h2>
+  <h2>Add a new recipe</h2>
 
 {{#if loggedIn}}
-<form id="add-recipe-form">
-  <div>   
-    <label for="recipe-title">Title</label>
-  </div>
-          <input type="text" id="recipe-title" name="recipe-title" />
-          <div>
-          <label for="recipe-description">Description</label>
-          </div>
-          <input type="text" id="recipe-description" name="recipe-description" />
-        </div>
-        {{>ingredients-instructions}}
-          <div>
-      <div>
-          <h2>What allengens is your recipe free of?</h2>
-      {{>allergy-chart}}
-      </div>
-  </div>
-            <button type="submit" class="btn block my-2">Submit</button>
-        </div>
+  <form id="add-recipe-form">
+    <div class="form-group">
+      <label for="recipe-title">Title</label>
+      <input class="form-control" type="text" id="recipe-title" name="recipe-title" />
     </div>
-  </div>
-</form>
+    
+    <div class="form-group">
+      <label for="recipe-description">Description</label>
+      <input class="form-control" type="text" id="recipe-description" name="recipe-description" />
+    </div>
+    
+    {{>ingredients-instructions}}
+ 
+    {{>allergy-chart}}
+
+    <button type="submit" class="btn block my-2">Submit</button>
+  </form>
 </section>
-<script src="./javascript/allergen-filter.js"></script>
 <script src="/javascript/add-recipe.js"></script>
 {{else}}
-<div>
-  <p>
-    Oops! Looks like you need to create a user profile still. Click the Sign Up button above to get access to your very own kitchen.
-  </p>
-</div>
+<script>
+  document.location.replace('/login')
+</script>
 {{/if}}

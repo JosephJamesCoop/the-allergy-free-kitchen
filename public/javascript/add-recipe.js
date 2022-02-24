@@ -12,6 +12,7 @@ async function recipeFormHandler(event) {
     'input[name="recipe-instructions"]'
   ).value;
 
+  console.log(title, description, ingredients, instructions)
   if (title && description && ingredients && instructions) {
     const response = await fetch(`../api/recipes`, {
       method: "POST",
@@ -37,4 +38,4 @@ async function recipeFormHandler(event) {
 
 document
   .querySelector("#add-recipe-form")
-  .addEventListener("click", recipeFormHandler);
+  .addEventListener("submit", recipeFormHandler);
