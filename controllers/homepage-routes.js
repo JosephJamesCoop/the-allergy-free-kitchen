@@ -32,6 +32,15 @@ router.get("/", (req, res) => {
     .then(async (dbRecipeData) => {
       // pass a single recipe object into the homepage template
       const recipes = dbRecipeData.map((recipe) => recipe.get({ plain: true }));
+      recipes.sort((recipeOne, recipeTwo) => {
+        if (recipeOne.vote_count < recipeTwo.vote_count) {
+          return 1
+        }
+        if (recipeOne.vote_count > recipeTwo.vote_count) {
+          return -1
+        }
+        return 0
+      })
       res.render("homepage", { recipes, loggedIn: req.session.loggedIn, name: req.session.username });
     })
     .catch((err) => {
