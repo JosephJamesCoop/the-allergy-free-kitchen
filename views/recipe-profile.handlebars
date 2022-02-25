@@ -1,29 +1,43 @@
-<article class="container recipe-article">
-    <div class="row">
-        <h3 class="text-center">
-            {{recipe.name}}
-        </h3>
-    </div>
-    <div class="row">
-        <div id="description" class="col">
+<br>
+<br>
+<article class="marg container">
+    <div >
+        <div class="recipe card color1 width1">
+                    <div class="card-body d-flex text-center flex-column color1">
+                            <h3> {{recipe.name}} </h3>
+                    </div>
+                </div>
+        <div id="description">
             <p>
                 {{>single-recipe-description recipe}}
             </p>
+            
             <div id="ingredients">
                 {{>ingredients}}
             </div>
+            <br>
         </div>
+        </div>
+        <br>
         <div class="col text-center">
             <div>
-                <h5>Instructions</h5>
+                 <div class="width1 recipe card color6">
+                    <div class="card-body d-flex flex-column color1">
+                          <h5 >Instructions</h5>
+                    </div>
+                </div>
+             
                 {{#each recipe.instructions}}
-                <div class="recipe card m-3">
-                    <div class="card-body d-flex flex-column">
+                <br>
+                <div class="width1 recipe card">
+                    <div class="card-body d-flex flex-column color5">
                         <div class="py-30">{{this}}</div>
                     </div>
                 </div>
                 {{/each}}
             </div>
         </div>
-    </div>
+       
+
+
 </article>
