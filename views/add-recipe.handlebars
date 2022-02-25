@@ -1,0 +1,28 @@
+<section class="container">
+  <h2>Add a new recipe</h2>
+
+{{#if loggedIn}}
+  <form id="add-recipe-form">
+    <div class="form-group">
+      <label for="recipe-title">Title</label>
+      <input class="form-control" type="text" id="recipe-title" name="recipe-title" />
+    </div>
+    
+    <div class="form-group">
+      <label for="recipe-description">Description</label>
+      <input class="form-control" type="text" id="recipe-description" name="recipe-description" />
+    </div>
+    
+    {{>ingredients-instructions}}
+ 
+    {{>allergy-chart}}
+
+    <button type="submit" class="btn block my-2">Submit</button>
+  </form>
+</section>
+<script src="/javascript/add-recipe.js"></script>
+{{else}}
+<script>
+  document.location.replace('/login')
+</script>
+{{/if}}

@@ -1,0 +1,27 @@
+nav {
+    background-color: #429E9B;
+}
+
+.block {
+    display: block;
+    width: 5rem;
+    border: none;
+    background-color: #F8CE62;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+.simple-border {
+    padding: 10px;
+    border: 1px solid;
+}
+
+.allergen-icon {
+    width: 50px;
+    margin: 5px;
+}
+
+.recipe {
+    width: 576px;
+}
