@@ -38,3 +38,4 @@ async function recipeFormHandler(event) {
 document
   .querySelector("#add-recipe-form")
   .addEventListener("click", recipeFormHandler);
+ 
