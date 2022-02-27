@@ -1,8 +1,16 @@
  <div class="box">
      <form>
          <label>
-                Check if the recipe contains dairy. (Ex: milk, cheese, yogurt)</span>
-              <input type="checkbox" name="dairy">
+                Check if the recipe contains dairy. (Ex: milk, cheese, yogurt)
+              <input type="checkbox" name="dairy" value="dairy">
+              <script>
+                  checkBox = document.getElementById('takenBefore').addEventListener('click', event =>
+                  {
+                      if(event.target.checked) {
+                          alert("Box checked!");
+                      }
+                  });
+              </script>
             </label>
             </div>
         <div>
@@ -35,4 +43,5 @@
             Is your recipe Vegetarian friendly? (Ex: Meats: Beef, Chicken, Pork, Fish, etc. Fats: Lard, Gelatin)
             <input type="checkbox">Yes</p><input type="checkbox">No</p></h4>
           </label>
+          </div>
           </div>

@@ -1,3 +1,9 @@
+async function filter(event, filterCol) {
+  let element = event.target;
+
+  
+}
+
 //dairy filter button
 async function dairy() {
   document.location.replace('/allergy/dairy');
