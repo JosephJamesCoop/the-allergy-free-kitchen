@@ -13,7 +13,3 @@ router.use('/recipe', recipeProfileRoutes);
 router.use('/allergy', allergyRoutes);
 
 module.exports = router;
-
-
-//htm routes 
-// api routes
