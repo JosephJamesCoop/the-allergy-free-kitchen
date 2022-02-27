@@ -1,38 +1,25 @@
- <div class="box">
-     <form>
-         <label>
-                Check if the recipe contains dairy. (Ex: milk, cheese, yogurt)</span>
-              <input type="checkbox" name="dairy">
-            </label>
-            </div>
-        <div>
-         <label>
-              Check if the recipe contains Soy. (Ex: Edamame, Miso, Natto, Tofu)
-             <input type="checkbox" name="soy">
-            </label>
-            </div>
-          <div>
-              <label>
-              Check if the recipe contains Nuts. (Ex: Peanuts, Almond, Brazil Nuts, Cashews, Hazelnuts, Pecans, Pistacios, Walnuts)
-            <input type="checkbox" name="nuts">
-            </label>
-          </div>
-
-          <div>
-              <label>
-              Does your recipe meet the Celiac guidelines? (Does not contain: Wheat, Rye, Barley or Triticale, Malt, Brewer's Yeast, Wheat starch)
-            <input type="checkbox" name="celiac" onlicks="return false;">Yes</p><input type="checkbox">No</p>
-            </label>
-          </div>
-          <div>
-              <label>
-              Check if the recipe contains shellfish. (Ex Abalone, Clams, Cockle, Cuttlefish, Mussels, Octopus, Oysters)
-               <input type="checkbox" name="shellfish">
-            </label>
-          </div>
-          <div>
-              <label>
-            Is your recipe Vegetarian friendly? (Ex: Meats: Beef, Chicken, Pork, Fish, etc. Fats: Lard, Gelatin)
-            <input type="checkbox">Yes</p><input type="checkbox">No</p></h4>
-          </label>
-          </div>
+<h2>What allergens does your recipe contain?</h2>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" name="dairy">
+  <label class="form-check-label">This recipe contains <strong>Dairy</strong>. (Ex: milk, cheese, yogurt)</label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" name="soy">
+  <label class="form-check-label">This recipe contains <strong>Soy</strong>. (Ex: Edamame, Miso, Natto, Tofu)</label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" name="nut">
+  <label class="form-check-label">This recipe contains <strong>Nuts</strong>. (Ex: Peanuts, Almond, Brazil Nuts, Cashews, Hazelnuts, Pecans, Pistachios, Walnuts)</label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" name="shellfish">
+  <label class="form-check-label">This recipe contains <strong>Shellfish</strong>. (Ex: Shrimp, Abalone, Clams, Cockle, Cuttlefish, Mussels, Octopus, Oysters)</label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" name="celiac">
+  <label class="form-check-label">This recipe is <strong>Celiac-friendly</strong>. (Does NOT contain: Wheat, Rye, Barley or Triticale, Malt, Brewer's Yeast, Wheat starch)</label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" name="vegetarian">
+  <label class="form-check-label">This recipe is <strong>Vegetarian</strong>. (Does NOT contain: Meats: Beef, Chicken, Pork, Fish, etc. Fats: Lard, Gelatin)</label>
+</div>

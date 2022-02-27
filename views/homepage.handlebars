@@ -1,10 +1,10 @@
 {{> allergens }}
 <div class="container mt-5">
     <h1 class="text-center">Top Recipes of the Week</h1>
-
+    
     <div id="top-recipes" class="d-flex flex-wrap justify-content-center mt-4">
         {{#each recipes as |recipe|}}
-            {{> recipe-description}}
+            {{>recipe-description loggedIn=../loggedIn}}
         {{/each}}
     </div>
 </div>

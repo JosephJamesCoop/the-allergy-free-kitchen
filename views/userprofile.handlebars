@@ -4,8 +4,7 @@
 
     <div id="top-recipes" class="d-flex flex-wrap justify-content-center mt-4">
         {{#each recipes as |recipe|}}
-            {{> recipe-description}}
+            {{> recipe-description loggedIn=../loggedIn}}
         {{/each}}
     </div>
 </div>
-<script src="./javascript/allergen-filter.js"></script>

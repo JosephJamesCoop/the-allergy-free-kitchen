@@ -19,7 +19,8 @@
 
 <script>
     document.getElementById('up-vote-button-{{ id }}').addEventListener('click', async (event) => {
-        {{#if ../loggedIn}}
+        {{#if loggedIn}}
+
         const response = await fetch('/api/votes/{{ id }}', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' }
