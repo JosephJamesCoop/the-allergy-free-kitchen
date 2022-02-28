@@ -8,6 +8,7 @@ Allergy-based recipe network
   ![](https://img.shields.io/badge/express.js-dep-blue?logo=express)
   ![](https://img.shields.io/badge/bcrypt-dep-blue?logo=npm)
   ![](https://img.shields.io/badge/expressHandlebars-dep-blue?logo=npm)
+  ![](https://img.shields.io/badge/inflection-dep-blue?logo=npm)
 
   ## Description
 
@@ -28,7 +29,7 @@ Allergy-based recipe network
   * [License](#license)
 
   ## Deployment
-  [Heroku Deployment](https://heroku.com)
+  [Heroku Deployment](https://afk-network.herokuapp.com/)
 
   ## Installation
   If you are planning on cloning the repository and deploying it yourself, these are the steps necessary:
